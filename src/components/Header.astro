@@ -1,0 +1,46 @@
+---
+// src/components/Header.astro
+---
+
+<style>
+    .header-wrapper {
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    header {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px) saturate(30%);
+    }
+
+    nav > ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav > ul > div {
+        display: flex;
+        gap: 4vmin;
+    }
+</style>
+
+<header>
+    <div class="header-wrapper">
+        <nav>
+            <ul>
+                <div>
+                    <!-- to the right -->
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">contact</a></li>
+                </div>
+                <li><a href="#">misc</a></li>
+                <!-- to the left -->
+            </ul>
+        </nav>
+    </div>
+</header>

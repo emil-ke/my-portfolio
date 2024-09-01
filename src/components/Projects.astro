@@ -1,0 +1,197 @@
+---
+// src/components/Projects.astro
+import { projects } from "../data/projects.js";
+---
+
+<style>
+    .projects-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 0;
+    }
+
+    .projects {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 2rem;
+        width: 92%;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .project {
+        width: calc(50% - 1rem);
+        position: relative;
+        cursor: pointer;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        border-radius: 2px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .project:hover {
+    }
+
+    .img-container {
+        position: relative;
+        width: 100%;
+        padding-top: 66.67%;
+        overflow: hidden;
+    }
+
+    .img-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+            transform 0.3s ease-in-out,
+            filter 0.3s ease;
+    }
+
+    .img-container:hover img {
+        filter: brightness(70%);
+        transform: scale(1.05);
+    }
+
+    .description-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .description-overlay p {
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .project:hover .description-overlay {
+        opacity: 1;
+    }
+
+    .project-name {
+        text-align: center;
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        color: var(--text-color);
+        transition: color 0.3s ease;
+    }
+
+    .project:hover .project-name {
+        color: var(--accent);
+    }
+
+    .preview-window {
+        position: absolute;
+        display: none;
+        background-color: transparent;
+        aspect-ratio: 16/9;
+        max-width: 800px;
+        width: 100%;
+        height: auto;
+        border: 2px solid var(--accent);
+    }
+
+    .preview-window iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+</style>
+
+<section class="projects-wrapper">
+    <ul class="projects">
+        {
+            projects.map((project) => (
+                <li class="project" data-link={project.link}>
+                    <a href={project.link}>
+                        <div class="img-container">
+                            <img
+                                src={project.imgSrc}
+                                alt={project.name}
+                                loading="lazy"
+                            />
+                            <div class="description-overlay">
+                                <p>{project.description}</p>
+                            </div>
+                        </div>
+                        <h4 class="project-name">{project.name}</h4>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+
+    <div id="preview" class="preview-window">
+        <iframe src="" frameborder="0"></iframe>
+    </div>
+</section>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        const previewWindow = document.getElementById("preview");
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        const easingFactor = 0.23;
+
+        function animate() {
+            // Smoothly interpolate current position to target position
+            currentX += (targetX - currentX) * easingFactor;
+            currentY += (targetY - currentY) * easingFactor;
+
+            previewWindow.style.top = `${currentY}px`;
+            previewWindow.style.left = `${currentX}px`;
+
+            requestAnimationFrame(animate);
+        }
+
+        document.addEventListener("mousemove", (e) => {
+            if (previewWindow.style.display === "block") {
+                targetX = e.pageX + 15;
+                targetY = e.pageY + 15;
+            }
+        });
+
+        document.querySelectorAll(".project").forEach((item) => {
+            item.addEventListener("mouseenter", (e) => {
+                previewWindow.style.display = "block";
+                const rect = e.target.getBoundingClientRect();
+
+                // Adjust positioning based on document coordinates
+                targetX = rect.left + window.scrollX;
+                targetY = rect.bottom + window.scrollY + 15;
+            });
+
+            item.addEventListener("mouseleave", () => {
+                previewWindow.style.display = "none";
+            });
+        });
+
+        // Start the animation loop
+        animate();
+    });
+</script>

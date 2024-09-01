@@ -1,0 +1,152 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+---
+
+<BaseHead title="Langton's Ant" description="" />
+<style>
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+    }
+    #antCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: -1;
+    }
+
+    .control-buttons {
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+    }
+    .control-buttons > button {
+        height: auto;
+        padding: 0.5rem 1rem;
+        background-color: rgba(238, 238, 238, 0.623);
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #000;
+        transition: background-color 0.3s ease;
+    }
+
+    .restart-button:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <canvas id="antCanvas"></canvas>
+        <div class="control-buttons">
+            <button id="restartButton">Restart</button>
+            <button id="togglePlayButton">Pause</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("antCanvas");
+        const ctx = canvas.getContext("2d");
+        const restartButton = document.getElementById("restartButton");
+        const togglePlayButton = document.getElementById("togglePlayButton");
+
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+
+        const cellSize = 8;
+        const cols = Math.floor(canvas.width / cellSize);
+        const rows = Math.floor(canvas.height / cellSize);
+
+        let grid = Array.from({ length: cols * rows }, () => 0);
+        let antX = Math.floor(cols / 2);
+        let antY = Math.floor(rows / 2);
+        let antDir = 0; // 0 = up, 1 = right, 2 = down, 3 = left
+        let isPlaying = true;
+        let animationFrameId;
+        const animSpeed = 16; // in ms
+        let lastUpdate = 0;
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    ctx.fillStyle = grid[y * cols + x]
+                        ? "#f0f0f0"
+                        : "transparent";
+                    ctx.fillRect(
+                        x * cellSize,
+                        y * cellSize,
+                        cellSize,
+                        cellSize,
+                    );
+                }
+            }
+        }
+
+        function updateGrid() {
+            const index = antY * cols + antX;
+            grid[index] = 1 - grid[index]; // Flip the cell
+            antDir = (antDir + (grid[index] ? 1 : -1) + 4) % 4;
+
+            switch (antDir) {
+                case 0:
+                    antY = (antY - 1 + rows) % rows;
+                    break;
+                case 1:
+                    antX = (antX + 1) % cols;
+                    break;
+                case 2:
+                    antY = (antY + 1) % rows;
+                    break;
+                case 3:
+                    antX = (antX - 1 + cols) % cols;
+                    break;
+            }
+        }
+
+        function gameLoop(timestamp) {
+            if (isPlaying) {
+                if (timestamp - lastUpdate >= animSpeed) {
+                    updateGrid();
+                    drawGrid();
+                    lastUpdate = timestamp;
+                }
+                animationFrameId = requestAnimationFrame(gameLoop);
+            }
+        }
+
+        function startGame() {
+            isPlaying = true;
+            lastUpdate = performance.now(); // Use current time to start
+            gameLoop(10);
+        }
+
+        function stopGame() {
+            isPlaying = false;
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                stopGame();
+                togglePlayButton.textContent = "Resume";
+            } else {
+                startGame();
+                togglePlayButton.textContent = "Pause";
+            }
+        }
+
+        restartButton.addEventListener("click", () => {
+            stopGame();
+            grid = Array.from({ length: cols * rows }, () => 0);
+            antX = Math.floor(cols / 2);
+            antY = Math.floor(rows / 2);
+            antDir = 0;
+            startGame();
+        });
+
+        togglePlayButton.addEventListener("click", togglePlayPause);
+
+        startGame();
+    </script>
+</body>

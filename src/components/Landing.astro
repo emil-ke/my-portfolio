@@ -1,0 +1,41 @@
+---
+// src/components/Landing.astro
+---
+
+<style>
+    .landing {
+        width: 92%;
+        min-height: 100vh;
+        background-image: url("/rene_de_gas.png");
+        background-repeat: no-repeat;
+        background-position: 90% 100%;
+        background-size: 40%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .landing h5 {
+        padding-top: 50vh;
+        transition-delay: 0.2s;
+    }
+
+    .blur {
+        transition: all 0.3s ease;
+    }
+
+    .blur:hover {
+        filter: blur(3px);
+    }
+</style>
+
+<section class="landing">
+    <h1 class="hidden">
+        hi <span class="font-change"> & </span>welcome, <br /> my name is
+        <span class="font-change accent-color blur">emil</span>
+    </h1>
+    <h5 class="hidden">
+        rené de gas<br /><span class="font-change small">(1855)</span>
+    </h5>
+</section>

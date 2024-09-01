@@ -1,0 +1,176 @@
+---
+// src/components/ConwayGameBlock.astro
+---
+
+<style>
+    .block {
+        width: 100%;
+        height: 20vh;
+        background-color: var(--accent);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    #gameOfLifeCanvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-color: transparent;
+    }
+
+    .control-buttons {
+        position: absolute;
+        bottom: 0%;
+        right: 4%;
+    }
+    .control-buttons > button {
+        height: auto;
+        padding: 0.5rem 1rem;
+        background-color: rgba(238, 238, 238, 0.808);
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #000;
+        transition: background-color 0.3s ease;
+    }
+
+    .restart-button:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+</style>
+
+<div class="block">
+    <canvas id="gameOfLifeCanvas"></canvas>
+    <div class="control-buttons">
+        <button class="restart-button" id="restartButton">run again</button>
+        <button class="toggle-play-button" id="togglePlayButton">pause</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const canvas = document.getElementById("gameOfLifeCanvas");
+    const ctx = canvas.getContext("2d");
+    const restartButton = document.getElementById("restartButton");
+    const togglePlayButton = document.getElementById("togglePlayButton");
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const cellSize = 5;
+    const cols = Math.floor(canvas.width / cellSize);
+    const rows = Math.floor(canvas.height / cellSize);
+
+    let grid;
+    let animationFrameId;
+    let animationSpeed = 24; // in ms
+    let isPlaying = true;
+
+    // Initialize the grid with a random state using Uint8Array for efficiency
+    function initializeGrid() {
+        grid = new Uint8Array(rows * cols);
+        for (let i = 0; i < grid.length; i++) {
+            grid[i] = Math.random() > 0.85 ? 1 : 0;
+        }
+    }
+
+    function countNeighbors(grid, x, y) {
+        const neighbors = [
+            [0, 1],
+            [1, 1],
+            [1, 0],
+            [1, -1],
+            [0, -1],
+            [-1, -1],
+            [-1, 0],
+            [-1, 1],
+        ];
+        return neighbors.reduce((acc, [dx, dy]) => {
+            const newX = x + dx;
+            const newY = y + dy;
+            if (newX >= 0 && newX < cols && newY >= 0 && newY < rows) {
+                acc += grid[newY * cols + newX];
+            }
+            return acc;
+        }, 0);
+    }
+
+    function updateGrid() {
+        const newGrid = new Uint8Array(grid.length);
+
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                const neighbors = countNeighbors(grid, x, y);
+                const index = y * cols + x;
+                if (grid[index] === 1) {
+                    newGrid[index] = neighbors === 2 || neighbors === 3 ? 1 : 0;
+                } else {
+                    newGrid[index] = neighbors === 3 ? 1 : 0;
+                }
+            }
+        }
+        grid = newGrid;
+    }
+
+    function drawGrid() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+                const index = y * cols + x;
+                const xPos = x * cellSize;
+                const yPos = y * cellSize;
+
+                ctx.fillStyle = grid[index] ? "#FFFFFF" : "transparent";
+                ctx.strokeStyle = 2;
+                ctx.lineWidth = "var(--background)";
+
+                ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+
+                ctx.strokeRect(xPos, yPos, cellSize, cellSize);
+            }
+        }
+    }
+
+    function gameLoop() {
+        if (isPlaying) {
+            updateGrid();
+            drawGrid();
+            animationFrameId = requestAnimationFrame(gameLoop);
+        }
+    }
+
+    function startGame() {
+        if (!grid) {
+            initializeGrid(); // Only initialize if grid is not yet set
+        }
+        isPlaying = true;
+        gameLoop();
+    }
+
+    function stopGame() {
+        isPlaying = false;
+        cancelAnimationFrame(animationFrameId);
+    }
+
+    function togglePlayPause() {
+        if (isPlaying) {
+            stopGame();
+            togglePlayButton.textContent = "resume";
+        } else {
+            startGame(); // Start the loop without reinitializing the grid
+            togglePlayButton.textContent = "pause";
+        }
+    }
+
+    restartButton.addEventListener("click", () => {
+        stopGame();
+        initializeGrid(); // Reinitialize the grid
+        startGame();
+    });
+
+    togglePlayButton.addEventListener("click", togglePlayPause);
+
+    // Initialize and start the game on page load
+    startGame();
+</script>
