@@ -1,0 +1,28 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Landing from "../components/Landing.astro";
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<BaseHead title="Whatever" description="" />
+
+	<style>
+		main {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+	</style>
+
+	<body data-theme="dark">
+		<main>
+			<Header />
+			<Landing />
+
+			<h3 style="padding: 20em 0 2rem 0" class="hidden">projects</h3>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<style>
+    header {
+        width: 100%;
+        position: sticky;
+        display: flex;
+        justify-content: center;
+        z-index: 100;
+    }
+
+    .header-wrapper {
+        width: 95%;
+        position: fixed;
+        top: 2rem;
+        padding: 1rem 0;
+    }
+
+    nav {
+        height: 34vh;
+        width: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+    }
+    .logo {
+        text-align: center;
+        padding: 1rem 0 2rem 0;
+    }
+
+    .header-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 4vmin;
+    }
+</style>
+
+<header>
+    <div class="header-wrapper">
+        <nav>
+            <ul>
+                <li><a href="#"><h4 class="logo">eb</h4></a></li>
+                <div class="header-buttons">
+                    <li><a href="#">projects</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">contact</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+</header>
