@@ -4,9 +4,9 @@
 
 :root,
 [data-theme="dark"] {
-    --background: #1b1b1b;
+    --background: #121213;
     --text-color: #d9e7d2;
-    --accent: #ff2d2d;
+    --accent: #dd4c89;
 }
 
 [data-theme="light"] {
@@ -57,18 +57,21 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Kulture";
     margin: 0 0 0.5rem 0;
     font-weight: normal;
-    line-height: 1.1;
+    line-height: 1;
 }
 
 h1 {
     font-size: 17.942rem;
+    font-weight: 600;
+    letter-spacing: -22px;
 }
 
 h2 {
     font-size: 11.089rem;
+    font-weight: 500;
+    letter-spacing: -12px;
 }
 
 h3 {

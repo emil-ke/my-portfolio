@@ -1,28 +1,26 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Landing from "../components/Landing.astro";
+import Top from "../components/Top.astro";
+import Projects from "../components/Projects.astro";
 ---
 
-<!doctype html>
-<html lang="en" data-theme="dark">
-	<BaseHead title="Whatever" description="" />
+<script>
+	import Lenis from "lenis";
 
-	<style>
-		main {
-			width: 100%;
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-		}
-	</style>
+	const lenis = new Lenis();
 
-	<body data-theme="dark">
-		<main>
-			<Header />
-			<Landing />
+	// Use requestAnimationFrame to continuously update the scroll
+	function raf(time) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
 
-			<h3 style="padding: 20em 0 2rem 0" class="hidden">projects</h3>
-		</main>
-	</body>
-</html>
+	requestAnimationFrame(raf);
+</script>
+
+<Layout>
+	<Top />
+	<Header />
+	<Projects />
+</Layout>
