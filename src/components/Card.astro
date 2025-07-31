@@ -1,0 +1,42 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    bg_url: string;
+}
+
+const { title, description, bg_url } = Astro.props;
+---
+
+<style>
+    .card {
+        height: 200px;
+        width: 500px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .card > div {
+        z-index: 100;
+    }
+</style>
+
+<div class="card">
+    <img src={bg_url} alt="" />
+    <div class="cardTitle">
+        <h5>
+            {title}
+        </h5>
+    </div>
+    <div class="cardDesc">{description}</div>
+</div>

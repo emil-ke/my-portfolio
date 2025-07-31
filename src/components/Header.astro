@@ -1,22 +1,45 @@
 <style>
-    header {
-        padding: 2rem 0;
-        display: grid;
-        grid-template-columns: 2% 1fr 2%;
-    }
     nav {
-        grid-column: 2;
-        text-align: end;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: var(--accent);
+        height: 8vh;
+    }
+    ul {
+        grid-column: 1;
+        width: 100%;
+        display: flex;
+        justify-content: end;
+    }
+    ul li {
+        padding-left: 2rem;
+        display: block;
+        text-align: right;
     }
 
-    .sticky-header {
-        position: sticky;
-        top: 0;
+    ul li a {
+        transition: color 0.2s ease-in-out;
+        letter-spacing: -1px;
+        font-weight: 400;
+    }
+
+    ul li a:hover {
+        color: var(--text-color-alt);
+    }
+
+    .project-number {
+        font-weight: 300;
     }
 </style>
 
-<div class="sticky-header">
-    <header>
-        <nav>menu</nav>
-    </header>
-</div>
+<nav>
+    <ul>
+        <li>
+            <a href="#projects"
+                >PROJECTS<span class="project-number">⁽³⁾</span></a
+            >
+        </li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+    </ul>
+</nav>

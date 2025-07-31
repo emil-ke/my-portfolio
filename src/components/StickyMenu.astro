@@ -1,0 +1,199 @@
+---
+// StickyMenu.astro
+---
+
+<style>
+    .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    header {
+        padding: 2rem 0;
+        display: grid;
+        grid-template-columns: 4% 1fr 4%;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+        pointer-events: none;
+    }
+
+    header.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    nav {
+        grid-column: 2;
+        text-align: end;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+        z-index: 1101;
+    }
+
+    nav:hover {
+        color: var(--accent);
+    }
+
+    .dropdown-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: transparent;
+        backdrop-filter: blur(12px);
+        transition: width 0.2s ease;
+        z-index: 1000;
+    }
+
+    .dropdown-wrapper.show {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: fixed;
+        top: 0;
+        right: -50vh;
+        width: 0;
+        height: 100%;
+        background: var(--accent);
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        z-index: 1020;
+    }
+
+    .dropdown-menu.show {
+        width: 50%;
+        right: 0;
+        opacity: 1;
+    }
+
+    ul {
+        list-style: none;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul li a {
+        color: var(--text-color);
+        font-size: 2.441em;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 450px;
+        transition: all 0.2s ease;
+    }
+
+    ul li a:hover {
+        color: var(--text-color-alt);
+    }
+
+    .small {
+        font-size: 0.52em;
+        margin-left: 1.5em;
+    }
+
+    @media (max-width: 1200px) {
+        .dropdown-menu.show {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="sticky-header">
+    <header id="sticky-menu">
+        <nav id="menu-toggle">menu</nav>
+    </header>
+</div>
+
+<div class="dropdown-wrapper" id="dropdownWrapper"></div>
+
+<div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+        <li>
+            <a href="#projects">
+                <span class="text">PROJECTS</span>
+                <span class="small">(i)</span>
+            </a>
+        </li>
+        <li>
+            <a href="#about">
+                <span class="text">ABOUT</span>
+                <span class="small">(ii)</span>
+            </a>
+        </li>
+        <li>
+            <a href="#contact">
+                <span class="text">CONTACT</span>
+                <span class="small">(iii)</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script is:inline>
+    const menu = document.getElementById("sticky-menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const dropdownWrapper = document.getElementById("dropdownWrapper");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    let menuOpen = false;
+
+    function openDropdown() {
+        dropdownWrapper?.classList.add("show");
+        dropdownMenu?.classList.add("show");
+        menuOpen = true;
+    }
+
+    function closeDropdown() {
+        dropdownWrapper?.classList.remove("show");
+        dropdownMenu?.classList.remove("show");
+        menuOpen = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            menu.classList.add("visible");
+        } else {
+            menu.classList.remove("visible");
+            closeDropdown();
+        }
+    });
+
+    menuToggle?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuOpen ? closeDropdown() : openDropdown();
+    });
+
+    document.addEventListener("click", (e) => {
+        if (
+            menuOpen &&
+            !dropdownMenu.contains(e.target) &&
+            !menuToggle.contains(e.target)
+        ) {
+            closeDropdown();
+        }
+    });
+
+    dropdownMenu?.addEventListener("click", (e) => {
+        if (e.target.closest("a")) {
+            closeDropdown();
+        }
+        e.stopPropagation();
+    });
+</script>

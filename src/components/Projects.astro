@@ -1,19 +1,29 @@
+---
+import Card from "./Card.astro";
+---
+
 <style>
     .projects {
         display: grid;
-        grid-template-columns: 2% 1fr 2%;
-        grid-template-rows: repeat(12, 1fr);
-        height: 400vh;
+        grid-template-columns: 4% 1fr 1fr 4%;
+        grid-template-rows: repeat(8, 200px);
+        height: 300vh;
     }
 
-    .title {
+    .projectsHeading {
         grid-row: 2;
         grid-column: 2;
     }
+
+    .projectList {
+        grid-column: 3 / 6;
+        grid-row: 0 / 9;
+    }
 </style>
 
-<section class="projects">
-    <h5 class="title">projects</h5>
+<section class="projects" id="projects">
+    <h5 class="projectsHeading">projects</h5>
+    <div class="projectList">&%!#0</div>
 </section>
 
 <script>
@@ -21,13 +31,13 @@
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".title", {
-        scrollTrigger: ".title",
+    gsap.from(".projectsHeading", {
+        scrollTrigger: ".projectsHeading",
         opacity: 0,
     });
 
-    gsap.to(".title", {
-        scrollTrigger: ".title",
+    gsap.to(".projectsHeading", {
+        scrollTrigger: ".projectsHeading",
         opacity: 1,
     });
 </script>

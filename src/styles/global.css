@@ -4,9 +4,12 @@
 
 :root,
 [data-theme="dark"] {
-    --background: #121213;
+    --background: #0c0c0e;
     --text-color: #d9e7d2;
-    --accent: #dd4c89;
+    --text-color-alt: #fffcf7;
+    --accent: #CF4F5A;
+    --accent_l: #dd838b;
+    --accent_d: #50161A;
 }
 
 [data-theme="light"] {
