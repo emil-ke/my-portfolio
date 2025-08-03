@@ -4,6 +4,7 @@ import StickyMenu from "../components/StickyMenu.astro";
 import HeaderHero from "../components/HeaderHero.astro";
 import Projects from "../components/Projects.astro";
 import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <script>
@@ -22,7 +23,8 @@ import About from "../components/About.astro";
 
 <Layout>
 	<HeaderHero />
-	<StickyMenu />
+	<StickyMenu showOnScroll="true" />
 	<Projects />
 	<About />
+	<Footer />
 </Layout>

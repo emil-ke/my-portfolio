@@ -1,5 +1,5 @@
 ---
-// StickyMenu.astro
+const { showOnScroll = false } = Astro.props;
 ---
 
 <style>
@@ -10,7 +10,7 @@
     }
 
     header {
-        padding: 2rem 0;
+        padding: 1rem 0;
         display: grid;
         grid-template-columns: 4% 1fr 4%;
         opacity: 0;
@@ -25,6 +25,7 @@
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
+        backdrop-filter: blur(7px) saturate(500%); /* is this costly? (TODO) */
     }
 
     nav {
@@ -46,7 +47,7 @@
         width: 0;
         height: 100%;
         background: transparent;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(7px);
         transition: width 0.2s ease;
         z-index: 1000;
     }
@@ -100,7 +101,7 @@
     }
 
     ul li a:hover {
-        color: var(--text-color-alt);
+        color: var(--accent_l);
     }
 
     .small {
@@ -116,7 +117,7 @@
 </style>
 
 <div class="sticky-header">
-    <header id="sticky-menu">
+    <header id="sticky-menu" data-show-on-scroll={showOnScroll}>
         <nav id="menu-toggle">menu</nav>
     </header>
 </div>
@@ -126,19 +127,19 @@
 <div class="dropdown-menu" id="dropdownMenu">
     <ul>
         <li>
-            <a href="#projects">
+            <a href="/#projects">
                 <span class="text">PROJECTS</span>
                 <span class="small">(i)</span>
             </a>
         </li>
         <li>
-            <a href="#about">
+            <a href="/#about">
                 <span class="text">ABOUT</span>
                 <span class="small">(ii)</span>
             </a>
         </li>
         <li>
-            <a href="#contact">
+            <a href="/#contact">
                 <span class="text">CONTACT</span>
                 <span class="small">(iii)</span>
             </a>
@@ -151,6 +152,8 @@
     const menuToggle = document.getElementById("menu-toggle");
     const dropdownWrapper = document.getElementById("dropdownWrapper");
     const dropdownMenu = document.getElementById("dropdownMenu");
+
+    const showOnScroll = menu.getAttribute("data-show-on-scroll") === "true";
 
     let menuOpen = false;
 
@@ -166,14 +169,18 @@
         menuOpen = false;
     }
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 200) {
-            menu.classList.add("visible");
-        } else {
-            menu.classList.remove("visible");
-            closeDropdown();
-        }
-    });
+    if (showOnScroll) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                menu.classList.add("visible");
+            } else {
+                menu.classList.remove("visible");
+                closeDropdown();
+            }
+        });
+    } else {
+        menu.classList.add("visible");
+    }
 
     menuToggle?.addEventListener("click", (e) => {
         e.stopPropagation();
