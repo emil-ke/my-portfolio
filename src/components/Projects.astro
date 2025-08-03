@@ -1,29 +1,52 @@
 ---
 import Card from "./Card.astro";
+import { projects } from "../data/projects";
 ---
 
 <style>
     .projects {
         display: grid;
         grid-template-columns: 4% 1fr 1fr 4%;
-        grid-template-rows: repeat(8, 200px);
-        height: 300vh;
+        grid-template-rows: auto 1fr;
+        position: relative;
+        margin-bottom: 8rem;
+        z-index: 1;
     }
 
     .projectsHeading {
-        grid-row: 2;
-        grid-column: 2;
+        position: absolute;
+        z-index: -2;
+        color: var(--accent);
+        top: 40%;
+        left: 4%;
     }
 
-    .projectList {
-        grid-column: 3 / 6;
-        grid-row: 0 / 9;
+    .projectCard.leftAligned {
+        text-align: left;
+        justify-self: start;
+    }
+    .projectCard.rightAligned {
+        text-align: right;
+        justify-self: end;
     }
 </style>
 
 <section class="projects" id="projects">
     <h5 class="projectsHeading">projects</h5>
-    <div class="projectList">&%!#0</div>
+    {
+        projects.map((project, idx) => (
+            <div
+                class={`projectCard ${idx % 2 === 0 ? "leftAligned" : "rightAligned"}`}
+                style={`grid-column: ${idx % 2 === 0 ? 3 : 2}; grid-row: ${idx + 2};`}
+            >
+                <Card
+                    name={project.name}
+                    description={project.description}
+                    link={project.link}
+                />
+            </div>
+        ))
+    }
 </section>
 
 <script>
