@@ -1,41 +1,85 @@
 <style>
     .about {
-        display: grid;
-        grid-template-columns: 4% 1fr 1fr 4%;
-        grid-template-rows: repeat(12, 1fr);
-        height: 100vh;
-        background-image: url("abstract.webp");
+        width: 100%;
+        min-height: 10vh;
+        /*background-image: url("abstract.webp");*/
+        background: var(--text-color);
+        color: var(--accent);
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
-        /*background-image: url("/shirt-self-portrait3.webp");
-        background-size: 50%;
-        background-position: 100% 0;
-        background-repeat: no-repeat;*/
+        display: grid;
+        grid-template-columns: 4% 1fr 1fr;
+        position: relative;
     }
 
     .aboutHeading {
-        grid-row: 2;
+        position: absolute;
+        left: 4%;
+        top: 5%;
+    }
+
+    .aboutText {
         grid-column: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: end;
+        text-align: right;
+        padding-right: 3rem;
     }
+
+    .imgContainer {
+        grid-column: 3;
+        width: 100%;
+        height: auto;
+    }
+
+    .aboutDesc {
+        width: 70%;
+    }
+
     .img {
-        grid-row: 1 / 13;
-        grid-column: 3 / 5;
-        background-image: url("/shirt-self-portrait3.webp");
-        background-repeat: no-repeat;
-        background-size: 100%;
-    }
-    .img-desc {
-        grid-row: 9;
-        grid-column: 3/5;
+        height: 100%;
+        width: 100%;
     }
 </style>
 
-<section class="about" id="about">
-    <h5 class="aboutHeading">about</h5>
-    <div class="img"></div>
-    <div class="img-desc">sfdklsjfklsdjfklsjfl</div>
-</section>
+<div class="aboutWrapper">
+    <section class="about" id="about">
+        <h5 class="aboutHeading">about</h5>
+        <div class="aboutText">
+            <p class="aboutDesc" style="margin-top: 12rem;">
+            la la la TODO: write later
+            </p>
+
+            <p class="aboutDesc">May god favor you with sleep.</p>
+
+            <p class="aboutDesc">
+                In the dream from which he'd wakened he had wandered in a cave
+                where the child led him by the hand. Their light playing over
+                the wet flowstone walls. Like pilgrims in a fable swallowed up
+                and lost among the inward parts of some granitic beast. Deep
+                stone flues where the water dripped and sang. Tolling in the
+                silence the minutes of the earth and the hours and the days of
+                it and the years without cease. Until they stood in a great
+                stone room where lay a black and ancient lake. And on the far
+                shore a creature that raised its dripping mouth from the
+                rimstone pool and stared into the light with eyes dead white and
+                sightless as the eggs of spiders. It swung its head low over the
+                water as if to take the scent of what it could not see.
+            </p>
+        </div>
+        <div class="imgContainer">
+            <img
+                src="/shirt-self-portrait3-45.webp"
+                alt="A self-portrait of me"
+                class="img"
+                loading="lazy"
+            />
+        </div>
+    </section>
+</div>
 
 <script>
     import gsap from "gsap";
