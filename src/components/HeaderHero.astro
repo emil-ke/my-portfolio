@@ -3,7 +3,7 @@ import Header from "./Header.astro";
 ---
 
 <style>
-    .wrapper {
+    .heroWrapper {
         height: 64vh;
         width: 100%;
         background-color: var(--accent);
@@ -14,16 +14,18 @@ import Header from "./Header.astro";
         grid-row-gap: 0px;
     }
     .name {
+        color: var(--accent_l);
         margin: 0;
         grid-column-start: 7;
         grid-row-end: -1;
         min-width: 9rem;
+        letter-spacing: -22px;
     }
 </style>
 
 <>
     <Header />
-    <div class="wrapper">
+    <div class="heroWrapper">
         <h1 class="name">emil</h1>
     </div>
 </>
@@ -37,37 +39,40 @@ import Header from "./Header.astro";
 
     text.addEventListener("mouseenter", () => {
         gsap.to(text, {
-            duration: 0.3,
+            duration: 0.75,
             scrambleText: {
-                text: "emil",
+                text: "emil bertlin",
                 chars: "12$",
+                speed: 0.4,
             },
         });
     });
 
     text.addEventListener("mouseleave", () => {
         gsap.to(text, {
-            delay: 0.4,
-            duration: 0.8,
+            delay: 0.2,
             scrambleText: {
-                text: "EMIL",
+                text: "e.b",
                 chars: "?!",
+                speed: 0.4,
             },
         });
     });
 
     gsap.to(text, {
-        delay: 0.25,
-        duration: 0.45,
+        delay: 0.2,
+        duration: 0.5,
         scrambleText: {
-            text: "EMIL",
-            chars: "!@(f0",
+            text: "e.b",
+            chars: "!?$&%",
+            speed: 0.4,
         },
+        ease: "power2.inOut",
     });
 
-    gsap.to(".wrapper", {
-        delay: 0.5,
-        duration: 0.4,
+    gsap.to(".heroWrapper", {
+        delay: 0.9,
+        duration: 0.45,
         ease: "power3.inOut",
         height: innerHeight / 3,
     });

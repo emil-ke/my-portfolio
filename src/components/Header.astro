@@ -1,9 +1,14 @@
+---
+import { projects } from "../data/projects";
+---
+
 <style>
     nav {
         display: grid;
         grid-template-columns: 1fr 1fr;
         background-color: var(--accent);
         height: 8vh;
+        padding-right: 4rem;
     }
     ul {
         grid-column: 1;
@@ -19,16 +24,19 @@
 
     ul li a {
         transition: color 0.2s ease-in-out;
+        color: var(--accent_l);
         letter-spacing: -1px;
         font-weight: 400;
     }
 
     ul li a:hover {
-        color: var(--text-color-alt);
+        color: var(--accent_d);
     }
 
     .project-number {
-        font-weight: 300;
+        font-size: 0.8rem;
+        vertical-align: super;
+        margin-left: 0.2rem;
     }
 </style>
 
@@ -36,8 +44,8 @@
     <ul>
         <li>
             <a href="#projects"
-                >PROJECTS<span class="project-number">⁽³⁾</span></a
-            >
+                >PROJECTS<span class="project-number">({projects.length})</span>
+            </a>
         </li>
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#">CONTACT</a></li>
