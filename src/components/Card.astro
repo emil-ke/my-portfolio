@@ -1,42 +1,46 @@
 ---
 interface Props {
-    title: string;
+    name: string;
     description: string;
-    bg_url: string;
+    link: string;
 }
 
-const { title, description, bg_url } = Astro.props;
+const { name, description, link } = Astro.props;
 ---
 
 <style>
     .card {
-        height: 200px;
-        width: 500px;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 1rem;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .card > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
+    .card img {
+        width: 100%;
+        height: auto;
     }
 
-    .card > div {
-        z-index: 100;
+    .card h5 {
+        margin: 0.5rem;
+    }
+
+    .card p {
+        margin: 0.5rem;
+    }
+
+    .cardLink {
+        text-decoration: none;
+        color: inherit;
     }
 </style>
 
 <div class="card">
-    <img src={bg_url} alt="" />
-    <div class="cardTitle">
-        <h5>
-            {title}
-        </h5>
-    </div>
-    <div class="cardDesc">{description}</div>
+    <a href={link} class="cardLink">
+        <h5>{name}</h5>
+        <p class="projectDescription">{description}</p>
+    </a>
 </div>
