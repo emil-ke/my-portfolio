@@ -9,7 +9,7 @@ import { projects } from "../data/projects";
         grid-template-columns: 4% 1fr 1fr 4%;
         grid-template-rows: auto 1fr;
         position: relative;
-        margin-bottom: 8rem;
+        margin: 6rem 0 12rem 0;
         z-index: 1;
     }
 
@@ -29,10 +29,37 @@ import { projects } from "../data/projects";
         text-align: right;
         justify-self: end;
     }
+
+    @media (max-width: 768px) {
+        .projects {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .projectsHeading {
+            top: 0;
+            left: 11%;
+        }
+        .projectCard {
+            padding-top: 8rem;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .projectCard:first-child {
+            padding-top: 12rem;
+        }
+        .projectCard.rightAligned {
+            text-align: start;
+            justify-self: start;
+        }
+    }
 </style>
 
 <section class="projects" id="projects">
-    <h5 class="projectsHeading">projects</h5>
+    <h5 class="projectsHeading"><span>projects</span></h5>
     {
         projects.map((project, idx) => (
             <div
