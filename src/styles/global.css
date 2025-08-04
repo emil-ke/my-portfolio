@@ -4,14 +4,14 @@
 :root,
 [data-theme="dark"] {
     --background: #0c0c0e;
-    --text-color: #d9e7d2;
-    --text-color-alt: #fffcf7;
+    --text-color: #faebe1;
+    --text-color-alt: #ffc8d9;
     /*--accent: #CF4F5A;
     --accent_l: #dd838b;
     --accent_d: #50161A;*/
     --accent: #96304f;
     --accent_l: #27060e;
-    --accent_d: #ff8bae;
+    --accent_d: #ff5f6c;
 }
 
 [data-theme="light"] {
@@ -32,7 +32,7 @@ body {
     background-color: var(--background);
     color: var(--text-color);
     font-size: 20px;
-    line-height: 1.8;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
@@ -91,6 +91,11 @@ img {
     height: auto;
     object-fit: cover;
     user-select: none;
+}
+
+.spacer {
+    height: 4rem;
+    width: 100%;
 }
 
 
