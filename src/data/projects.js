@@ -2,7 +2,7 @@
 export const projects = [
     {
         name: "Interactive Poetry Generator (Python)",
-        description: "A generative tool which turns keywords into semantically unhinged verses. Built in a day, just for fun.",
+        description: "A generative tool which turns keywords into semantically unhinged verses.",
         link: "/poetry-generator",
     },
     {
@@ -16,8 +16,8 @@ export const projects = [
         link: "/gitignore",
     },
     {
-        name: "Assembly Graph of Norwegian Spruce Genome (Java and Python)",
-        description: "A bioinformatics project for extracting information about an implicitly defined graph from a huge dataset. The graph algorithms are implemented in Java (variations of DFS). This extracted graph data is plotted, specifically histograms of the vertex degree and component density, using Python with matplotlib and numpy.",
+        name: "Assembly Graph for the Norwegian Spruce Genome (Java and Python)",
+        description: "A bioinformatics project for extracting information about an implicitly defined graph from a huge dataset. The graph algorithms are implemented in Java (variations of DFS). This extracted graph data is plotted, specifically histograms for the vertices degrees and component density, using Python with matplotlib and numpy.",
         link: "/assembly-graph",
     },
 

@@ -1,18 +1,65 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 import StickyMenu from "../components/StickyMenu.astro";
+import ProjectPage from "../components/ProjectPage.astro";
 ---
-
-<style>
-	.proj {
-		height: 100vh;
-	}
-</style>
 
 <Layout>
 	<StickyMenu />
-	<div class="proj">
-		<h4 class="title">poetry generator</h4>
-		<div class="desc"></div>
-	</div>
+	<main>
+		<ProjectPage
+			title="poetry generator"
+			images={["/poetry_screenshot1.webp", "/poetry_screenshot2.webp"]}
+		>
+			<p class="desc">
+				A command-line poetry generator that uses certain poetic
+				devices, mainly assonance, to create semantically oblivious
+				verses.
+			</p>
+			<p>
+				Even though the results are often janky and nonsensical, if you
+				pick your keywords carefully it can spit out surprisingly
+				cohesive poems with a fragmented ambiguous tone that almost
+				feels deliberate rather than accidental.
+			</p>
+			<p>
+				It builds a wordbank (JSON) from the NLTK Gutenberg corpus, a
+				collection of public domain books. Only words with a high enough
+				occurrence frequency are included, and the most common ones are
+				filtered out.
+			</p>
+			<p>
+				Poetic line templates are filled with words from the wordbank
+				alongside the user's keywords. Word choice is driven by vowel
+				overlap (i.e. assonance), which gives the output a kind of
+				weird, singsongy feel.
+			</p>
+			<p>
+				I'll probably port this tool in its somewhat faulty, sometimes
+				ungrammatical, state, into the game I'm working on (<a
+					href="/game"
+					style="color: var(--accent_d)">Drown</a
+				>). It would make sense as an in-world handheld computer that
+				generates strange poetry. Since the game's set in a dystopian
+				future, it fits that language itself would be breaking down,
+				post-war, post-climate collapse, scrambled into fragmentary
+				meaning.
+			</p>
+
+			<div class="spacer"></div>
+
+			<ul>
+				<li>Built with Python and nltk</li>
+				<li>
+					See the source code: <a
+						href="https://github.com/emil-ke/poem-p1"
+						style="color: var(--accent_d);"
+						target="_blank">GitHub/emil-ke/poem-p1</a
+					>
+				</li>
+			</ul>
+		</ProjectPage>
+	</main>
+	<Footer />
 </Layout>
