@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import StickyMenu from "../components/StickyMenu.astro";
+import ProjectPage from "../components/ProjectPage.astro";
+---
+
+<Layout>
+	<StickyMenu />
+	<ProjectPage title="gitignore" images={["/gitignore_screenshot1.webp"]}>
+		<p>
+			A small CLI tool for automatically adding files or directories to a
+			project’s root <code>.gitignore</code> file. Built in C++.
+		</p>
+		<p>
+			I built this because I often forget the syntax for adding stuff to <code
+				>.gitignore</code
+			>, especially when working deep inside nested folders. I also don’t
+			like populating the directory with <code>.gitignore</code> files in every
+			subdirectory. With this I can just run <code
+				>gitignore path/to/file</code
+			> and it adds the correct relative path to the root <code
+				>.gitignore</code
+			>, even if I'm many levels deep in the tree.
+		</p>
+		<p>
+			It recursively traverses upward to find the nearest <code>.git</code
+			> folder (or lets you pick if there are multiple), computes the relative
+			path, and appends it to the right <code>.gitignore</code> file, unless
+			it’s in already there.
+		</p>
+
+		<div class="spacer"></div>
+
+		<ul>
+			<li>Built with C++17</li>
+			<li>
+				See the source code: <a
+					href="https://github.com/emil-ke/gitignore"
+					style="color: var(--accent_d);"
+					target="_blank">GitHub/emil-ke/gitignore</a
+				>
+			</li>
+		</ul>
+	</ProjectPage>
+	<Footer />
+</Layout>

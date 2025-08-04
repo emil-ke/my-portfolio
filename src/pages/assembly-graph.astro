@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import StickyMenu from "../components/StickyMenu.astro";
+import ProjectPage from "../components/ProjectPage.astro";
+---
+
+<Layout>
+	<StickyMenu />
+	<ProjectPage
+		title="Assembly Graph for the Norwegian Spruce Genome"
+		images={[
+			"/genome_component_screenshot.webp",
+			"/genome_degrees_screenshot.webp",
+		]}
+	>
+		<p>
+			This project processes a large overlapping dataset from the
+			Norwegian spruce genome to extract information about an implicitly
+			defined graph. The graph is implicitely defined in the data through
+			edges which are described through long string identifiers in a `.m4`
+			file (around 49 million lines), which first has to be filtered and
+			cleaned. After preprocessing, a Java program constructs the graph
+			using adjacency lists and assigns compact integer IDs to each unique
+			node for space efficiency.
+		</p>
+
+		<p>
+			A degree distribution is calculated by iterating over the adjacency
+			list and counting neighbors for each node; a DFS-based algorithm is
+			used to count connected components with at least three nodes; and
+			another DFS-based method calculates component density, defined as
+			the ratio between actual and possible edges for each component. All
+			core algorithms are written in Java using standard collections and
+			file I/O.
+		</p>
+
+		<p>
+			The resulting data is written to text files and then visualized with
+			Python using matplotlib and numpy. Histograms are generated for the
+			degree distribution and component densities.
+		</p>
+
+		<p>
+			The Git repo includes a notebook for what I did on given days as
+			well as a full report in the <code>doc</code> directory.
+		</p>
+
+		<div class="spacer"></div>
+
+		<ul>
+			<li>Built with Java and Python</li>
+			<li>
+				See the source code: <a
+					href="https://github.com/emil-ke/genome-assembly-graph"
+					style="color: var(--accent_d);"
+					target="_blank">GitHub/emil-ke/genome-assembly-graph</a
+				>
+			</li>
+		</ul>
+	</ProjectPage>
+	<Footer />
+</Layout>
