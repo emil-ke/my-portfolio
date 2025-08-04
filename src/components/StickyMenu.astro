@@ -3,10 +3,17 @@ const { showOnScroll = false } = Astro.props;
 ---
 
 <style>
+    .menu-toggle-wrapper {
+        grid-column: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: auto;
+    }
     .sticky-header {
         position: sticky;
         top: 0;
-        z-index: 1000;
+        z-index: 2000;
     }
 
     header {
@@ -19,13 +26,13 @@ const { showOnScroll = false } = Astro.props;
             opacity 0.2s ease,
             transform 0.2s ease;
         pointer-events: none;
+        z-index: 2100;
     }
 
     header.visible {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
-        backdrop-filter: blur(7px) saturate(250%); /* is this costly? (TODO) */
     }
 
     nav {
@@ -33,11 +40,17 @@ const { showOnScroll = false } = Astro.props;
         text-align: end;
         cursor: pointer;
         transition: color 0.2s ease-in-out;
-        z-index: 1101;
+        position: relative;
+        z-index: 2200;
     }
 
     nav:hover {
-        color: var(--accent);
+        color: var(--accent_d);
+    }
+
+    nav#menu-toggle {
+        display: inline-block;
+        padding: 0 0 2em 2em;
     }
 
     .dropdown-wrapper {
@@ -54,6 +67,7 @@ const { showOnScroll = false } = Astro.props;
 
     .dropdown-wrapper.show {
         width: 100%;
+        z-index: 1000;
     }
 
     .dropdown-menu {
@@ -62,7 +76,7 @@ const { showOnScroll = false } = Astro.props;
         right: -50vh;
         width: 0;
         height: 100%;
-        background: var(--accent);
+        background: var(--accent_l);
         opacity: 0;
         display: flex;
         justify-content: center;
@@ -89,9 +103,9 @@ const { showOnScroll = false } = Astro.props;
     }
 
     ul li a {
-        color: var(--text-color);
-        font-size: 2.441em;
         text-decoration: none;
+        font-size: 2.7rem;
+        font-weight: 200;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -101,6 +115,40 @@ const { showOnScroll = false } = Astro.props;
     }
 
     ul li a:hover {
+        color: var(--accent_d);
+    }
+
+    ul li a .text {
+        flex: 1;
+        text-align: left;
+    }
+
+    ul li a .small {
+        flex: 0;
+        text-align: right;
+    }
+
+    ul li a::before {
+        content: "";
+        display: inline-block;
+        width: 25px;
+        height: 18px;
+        margin-right: 1rem;
+        background: no-repeat center/contain;
+        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="47" height="44" viewBox="0 0 47 44" fill="none"><circle cx="27" cy="21" r="15.5" stroke="red"/><path d="M31.008 6.16592C33.6254 6.76481 35.8193 8.12725 37.4736 10.2542C38.7827 11.9372 39.7509 13.8651 40.3037 15.925C40.775 17.6813 40.8792 19.4337 40.9239 21.2393C40.9978 24.2277 41.1037 27.252 40.735 30.2285C40.5473 31.7432 40.0204 33.1683 38.9564 34.2954C37.2603 36.0919 34.8218 37.0448 32.4551 37.5567C29.8318 38.1241 27.2972 37.8729 24.7134 37.2395C22.2574 36.6374 19.8437 35.7812 17.5955 34.6197C14.7774 33.1638 11.3003 30.9384 10.4135 27.6586C10.014 26.1813 9.82227 24.5963 9.68633 23.075C9.57916 21.8756 9.47126 20.6484 9.49386 19.4429C9.5114 18.5074 9.5737 17.5977 9.43683 16.6663C9.33048 15.9427 9.17217 15.2322 9.10179 14.5028C9.03485 13.8091 8.92918 13.0717 8.99486 12.3749C9.08245 11.4457 9.59787 10.6217 10.196 9.92982C11.6394 8.26029 14.1757 7.46354 16.3052 7.17462C17.6388 6.99368 18.987 7.0135 20.3293 6.98571C21.8398 6.95443 23.3485 6.88586 24.8596 6.87521C26.3639 6.86462 27.8731 6.86241 29.3684 7.04986C30.2677 7.16259 31.144 7.39895 32.0452 7.50253C33.9455 7.72096 36.4921 7.37848 38.0368 8.72865C39.4717 9.98287 40.4458 11.9221 41.3017 13.5797C42.6681 16.226 43.9481 19.0488 44.6949 21.9415C45.0515 23.3228 45.1897 24.8219 45.144 26.2472C45.1073 27.3922 44.7996 28.4601 44.0961 29.3766C43.3501 30.3485 42.3294 31.1607 41.373 31.9144C39.9901 33.0042 38.6303 34.212 37.1528 35.1686C35.3164 36.3577 33.3437 36.4706 31.2147 36.5266C29.4272 36.5737 27.6123 36.7257 25.8255 36.6157C24.6654 36.5443 23.4582 36.3851 22.3253 36.1132C21.5031 35.9158 20.8807 35.4043 20.3971 34.7195C20.0453 34.2215 19.844 33.7919 19.5559 33.2439C18.8733 31.9456 18.164 30.679 17.3638 29.4479C16.5184 28.1471 16.5553 28.2977 15.7456 27.0313C15.1137 26.043 14.5733 24.9989 13.9279 24.0195C13.2352 22.9686 12.3258 22.0835 11.7322 20.9649C11.2497 20.0556 10.9122 19.0733 10.4384 18.1562C9.95966 17.2296 9.5413 16.3648 9.32278 15.3404C9.06589 14.1363 8.71372 12.9408 8.65269 11.7048C8.58825 10.3999 8.66394 8.90628 9.25149 7.71282C9.68609 6.83005 10.4544 6.04185 11.2511 5.47801C12.706 4.44821 14.4324 3.8166 16.1306 3.32161C18.2927 2.69138 20.5401 2.20004 22.7744 1.91727C26.6279 1.42959 30.6256 1.34823 34.4582 2.04559C37.3546 2.57259 40.459 3.38993 42.8878 5.12871C44.1527 6.03429 45.3487 7.21975 45.6002 8.82489C45.8342 10.3184 45.2348 11.7273 44.5915 13.0343C42.7119 16.8532 40.3396 20.6628 36.4435 22.6936C34.7954 23.5527 33.0471 23.8241 31.2717 24.2726C29.9154 24.6152 28.7034 25.1403 27.5292 25.9014C25.3869 27.2902 23.798 29.2236 21.8941 30.8915C20.6793 31.9557 19.2449 33.1802 17.6133 33.5184C16.3811 33.7738 15.0651 33.392 13.91 32.9908C12.3373 32.4447 10.9023 31.6115 9.58653 30.5956C8.45428 29.7215 7.21181 28.6696 6.74222 27.2666C6.13014 25.4378 6.26954 23.1686 6.69945 21.3142C7.02795 19.8972 7.8059 18.8383 8.71328 17.7428C9.50803 16.7832 10.2481 15.7811 11.0408 14.82C11.6644 14.0639 12.2384 13.3274 12.6839 12.4498C13.5564 10.7307 14.2229 8.92955 15.5603 7.49184C16.8748 6.07878 18.7763 5.66229 20.586 5.21781C21.9799 4.87545 23.3936 4.67218 24.8061 4.42654C26.4331 4.14359 28.0212 3.67412 29.6535 3.42141C31.9002 3.0736 34.1643 3.02221 36.4328 3.02221C37.6243 3.02221 38.811 3.02449 39.9971 3.15052C41.1538 3.27341 42.0724 3.44517 42.8486 4.36951C44.0518 5.80241 44.4823 7.85593 44.866 9.63042C45.261 11.4575 45.4466 13.381 44.98 15.205C44.7244 16.2043 44.339 17.1725 44.0961 18.1705C43.5224 20.5272 42.5015 22.6986 40.9738 24.5934C39.447 26.4869 37.965 28.417 36.162 30.061C34.5524 31.5285 32.8321 32.4396 30.7585 33.0835C29.6734 33.4205 28.5729 33.7439 27.4437 33.8926C25.9853 34.0847 24.4913 34.029 23.0239 34.0744C20.818 34.1427 18.5845 34.1743 16.5155 35.0225C15.5756 35.4078 14.7901 36.2007 13.8138 36.4696C11.6595 37.063 8.94451 36.1438 7.09865 35.0795C4.83786 33.776 2.52093 31.5449 2.0017 28.8848C1.4802 26.213 2.42873 23.7983 3.55574 21.4211C4.03785 20.4042 4.73148 19.212 5.90818 18.8833C7.7788 18.3609 9.5439 19.5975 11.0051 20.5586C12.6602 21.6471 14.2366 22.8373 15.8454 23.991C16.7558 24.6438 17.6051 25.2766 18.3119 26.1545C19.6136 27.7713 21.053 29.2552 21.8263 31.2158C22.5457 33.0395 22.9419 35.0139 23.7724 36.7904C24.3159 37.9527 25.2639 39.1253 26.2033 39.9911C27.7901 41.4536 29.7144 42.131 31.8919 42.0299C33.4561 41.9573 34.9425 41.4767 36.4614 41.1495C37.4496 40.9367 38.4605 40.8193 39.4269 40.5115C41.201 39.9465 43.2137 38.7406 44.1531 37.0755C44.8595 35.8235 44.727 34.2314 44.0177 33.0122C43.5019 32.1258 42.5881 31.1979 41.594 30.8665" stroke="%23d9e7d2" stroke-width="2" stroke-linecap="square"/></svg>');
+        opacity: 0;
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+        transform: translateX(-10px);
+    }
+
+    ul li a:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .icon:hover {
         color: var(--accent_l);
     }
 
@@ -118,7 +166,9 @@ const { showOnScroll = false } = Astro.props;
 
 <div class="sticky-header">
     <header id="sticky-menu" data-show-on-scroll={showOnScroll}>
-        <nav id="menu-toggle">menu</nav>
+        <div class="menu-toggle-wrapper">
+            <nav id="menu-toggle">menu</nav>
+        </div>
     </header>
 </div>
 
@@ -128,19 +178,19 @@ const { showOnScroll = false } = Astro.props;
     <ul>
         <li>
             <a href="/#projects">
-                <span class="text">PROJECTS</span>
+                <span class="text">projects</span>
                 <span class="small">(i)</span>
             </a>
         </li>
         <li>
             <a href="/#about">
-                <span class="text">ABOUT</span>
+                <span class="text">about</span>
                 <span class="small">(ii)</span>
             </a>
         </li>
         <li>
             <a href="/#contact">
-                <span class="text">CONTACT</span>
+                <span class="text">contact</span>
                 <span class="small">(iii)</span>
             </a>
         </li>
@@ -161,12 +211,14 @@ const { showOnScroll = false } = Astro.props;
         dropdownWrapper?.classList.add("show");
         dropdownMenu?.classList.add("show");
         menuOpen = true;
+        if (menuToggle) menuToggle.textContent = "close";
     }
 
     function closeDropdown() {
         dropdownWrapper?.classList.remove("show");
         dropdownMenu?.classList.remove("show");
         menuOpen = false;
+        if (menuToggle) menuToggle.textContent = "menu";
     }
 
     if (showOnScroll) {
