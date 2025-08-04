@@ -7,20 +7,6 @@ import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<script>
-	import Lenis from "lenis";
-
-	const lenis = new Lenis();
-
-	// Use requestAnimationFrame to continuously update the scroll
-	function raf(time) {
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
-
-	requestAnimationFrame(raf);
-</script>
-
 <Layout>
 	<HeaderHero />
 	<StickyMenu showOnScroll="true" />

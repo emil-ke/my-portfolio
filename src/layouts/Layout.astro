@@ -3,11 +3,28 @@ import BaseHead from "../components/BaseHead.astro";
 ---
 
 <html lang="en">
-	<BaseHead title="Whatever" description="Todo" />
+	<BaseHead
+		title="Emil Bertlin | Portfolio"
+		description="The personal portfolio of the developer Emil Bertlin."
+	/>
 	<body data-theme="dark" lang="en">
 		<slot />
 	</body>
 </html>
+
+<script>
+	import Lenis from "lenis";
+
+	const lenis = new Lenis();
+
+	// Use requestAnimationFrame to continuously update the scroll
+	function raf(time) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+
+	requestAnimationFrame(raf);
+</script>
 
 <style is:global>
 	#content {
