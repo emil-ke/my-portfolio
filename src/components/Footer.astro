@@ -7,19 +7,19 @@
             100% 0%,
             100% 100%,
             0% 100%
-        ) !important; /* this doesn't seem to work properly on Zen browser */
+        ); /* doesn't seem to work on Firefox */
         z-index: 1;
     }
 
     .footerInner {
         position: relative;
-        height: calc(100vh + 200px) !important;
+        height: calc(100vh + 200px);
         top: -100vh;
     }
 
     .footerWrapper {
-        position: sticky !important;
-        top: calc(100vh - 200px) !important;
+        position: sticky;
+        top: calc(100vh - 200px);
         height: 200px;
         width: 100%;
     }
@@ -29,20 +29,22 @@
         color: var(--accent);
         display: flex;
         justify-content: space-between;
-        padding: 1rem 4% 1rem 4%;
         align-items: center;
+        padding: 1rem 4% 1rem 4%;
         height: 100%;
         width: 100%;
     }
     .left {
         width: 30%;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        gap: 1.5em;
+        font-size: 1.1em;
     }
 
     .GitHubLink {
         color: var(--accent);
+        white-space: nowrap;
     }
 
     .GitHubLink > .GitHubName {
@@ -56,6 +58,18 @@
     .GitHubName {
         text-decoration: underline;
         color: var(--accent_d);
+    }
+
+    @media (max-width: 768px) {
+        .left {
+            width: 100%;
+        }
+        footer {
+            font-size: 0.9em;
+        }
+        h4 {
+            display: none;
+        }
     }
 </style>
 
