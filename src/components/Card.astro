@@ -19,17 +19,22 @@ const { name, description, link } = Astro.props;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .card img {
-        width: 100%;
-        height: auto;
+    .card a:hover {
+        color: var(--accent_d);
+    }
+
+    .card a:hover > h5 {
+        color: var(--accent_d);
     }
 
     .card h5 {
         margin: 0.5rem;
+        transition: all 0.2s ease;
     }
 
     .card p {
         margin: 0.5rem;
+        transition: all 0.4s ease-in-out;
     }
 
     .cardLink {
