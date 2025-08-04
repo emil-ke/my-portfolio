@@ -78,11 +78,7 @@ const { title, images = [] } = Astro.props;
             <slot />
         </div>
         <div class="projectImages">
-            {
-                images.map((src) => (
-                    <img src={src} alt={title + " screenshot"} loading="lazy" />
-                ))
-            }
+            {images.map((src) => <img src={src} alt={title + " screenshot"} />)}
         </div>
     </div>
     <div class="spacer"></div>
