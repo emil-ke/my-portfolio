@@ -11,6 +11,7 @@
         display: grid;
         grid-template-columns: 4% 1fr 1fr;
         position: relative;
+        z-index: 3;
     }
 
     .aboutHeading {
@@ -33,15 +34,72 @@
         grid-column: 3;
         width: 100%;
         height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 
     .aboutDesc {
         width: 70%;
+        line-height: 1.4;
+    }
+
+    .aboutDesc:first-child {
+        width: 50%;
+        margin-top: 12rem;
+    }
+
+    .aboutDesc:nth-child(2) {
+        width: 60%;
+    }
+
+    .aboutDesc:last-child {
+        margin-bottom: 12rem;
     }
 
     .img {
         height: 100%;
         width: 100%;
+        transition: filter 0.3s ease;
+    }
+
+    .imgOverlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        white-space: nowrap;
+        color: var(--accent_l);
+    }
+
+    .imgContainer:hover .img {
+        filter: blur(7px) brightness(1.16);
+    }
+
+    .imgContainer:hover .imgOverlay {
+        opacity: 1;
+    }
+
+    #contact {
+    }
+
+    #email {
+        color: var(--background);
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .aboutDesc,
+        .aboutDesc:first-child,
+        .aboutDesc:nth-child(2) {
+            width: 100%;
+            text-align: left;
+        }
     }
 </style>
 
@@ -49,37 +107,58 @@
     <section class="about" id="about">
         <h5 class="aboutHeading">about</h5>
         <div class="aboutText">
-            <p class="aboutDesc" style="margin-top: 12rem;">
-            la la la TODO: write later
+            <p class="aboutDesc aboutDesc1">
+                I'm a math student at Stockholm University. I'll probably finish
+                next semester, though I might take an academic break instead.
             </p>
 
-            <p class="aboutDesc">May god favor you with sleep.</p>
+            <p class="aboutDesc aboutDesc2">
+                I've been programming on and off for about five years. I've
+                taken a few uni courses (algorithms and data structures, a bit
+                of ML), but most of what I know comes from making things on my
+                own.
+            </p>
 
-            <p class="aboutDesc">
-                In the dream from which he'd wakened he had wandered in a cave
-                where the child led him by the hand. Their light playing over
-                the wet flowstone walls. Like pilgrims in a fable swallowed up
-                and lost among the inward parts of some granitic beast. Deep
-                stone flues where the water dripped and sang. Tolling in the
-                silence the minutes of the earth and the hours and the days of
-                it and the years without cease. Until they stood in a great
-                stone room where lay a black and ancient lake. And on the far
-                shore a creature that raised its dripping mouth from the
-                rimstone pool and stared into the light with eyes dead white and
-                sightless as the eggs of spiders. It swung its head low over the
-                water as if to take the scent of what it could not see.
+            <p class="aboutDesc aboutDesc3">
+                These days I mostly work in Godot, but I started with web
+                development. I know JavaScript well (especially React and
+                Astro), along with Python, and some C, C++, and Java. Still,
+                what interests me most isn't the stack but what I can build with
+                it. I'm into creative development and tooling. I like building
+                systems, and I care about how things feel: response, friction,
+                rhythm. Because of this, I've grown to love design. So if the
+                work is thoughtful and expressive, I'm all in.
+            </p>
+
+            <p class="aboutDesc aboutDesc4">
+                If you think we'd work well together, reach out.
+            </p>
+            <p class="aboutDesc" id="contact">
+                Email me at: <br />
+                <a id="email"></a>
             </p>
         </div>
+
         <div class="imgContainer">
             <img
-                src="/shirt-self-portrait3-45.webp"
-                alt="A self-portrait of me"
+                src="/shirt-self-portrait3-45_new.webp"
+                alt="A self-portrait."
                 class="img"
                 loading="lazy"
             />
+            <div class="imgOverlay">This is one of my self-portraits.</div>
         </div>
     </section>
 </div>
+
+<script>
+    const user = "emilbertlin0";
+    const domain = "gmail.com";
+    const email = `${user}@${domain}`;
+    const emailLink = document.getElementById("email");
+    emailLink.textContent = email;
+    emailLink.href = `mailto:${email}`;
+</script>
 
 <script>
     import gsap from "gsap";
@@ -94,5 +173,21 @@
     gsap.to(".aboutHeading", {
         scrollTrigger: ".aboutHeading",
         opacity: 1,
+    });
+
+    gsap.utils.toArray(".aboutDesc").forEach((desc, i) => {
+        if (i === 4) return;
+        gsap.from(desc, {
+            y: 30,
+            opacity: 0,
+            clipPath: "inset(0 0 100% 0)",
+            duration: 0.36,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: desc,
+                start: "center 96%", // when each desc hits 96% from top
+                toggleActions: "play none none none",
+            },
+        });
     });
 </script>

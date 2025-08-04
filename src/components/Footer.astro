@@ -1,7 +1,25 @@
 <style>
+    .footerOuter {
+        position: relative;
+        height: 200px;
+        clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 100%,
+            0% 100%
+        ) !important; /* this doesn't seem to work properly on Zen browser */
+        z-index: 1;
+    }
+
+    .footerInner {
+        position: relative;
+        height: calc(100vh + 200px) !important;
+        top: -100vh;
+    }
+
     .footerWrapper {
-        position: sticky;
-        top: calc(100vh - 200px);
+        position: sticky !important;
+        top: calc(100vh - 200px) !important;
         height: 200px;
         width: 100%;
     }
@@ -16,15 +34,46 @@
         height: 100%;
         width: 100%;
     }
+    .left {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .GitHubLink {
+        color: var(--accent);
+    }
+
+    .GitHubLink > .GitHubName {
+        transition: all 0.2s ease-out;
+    }
+
+    .GitHubLink:hover > .GitHubName {
+        color: var(--text-color);
+    }
+
+    .GitHubName {
+        text-decoration: underline;
+        color: var(--accent_d);
+    }
 </style>
 
-<div
-    style="position: relative; height: 200px; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);"
->
-    <div style="position: relative; height: calc(100vh + 200px); top: -100vh;">
+<div class="footerOuter">
+    <div class="footerInner">
         <div class="footerWrapper">
             <footer>
-                <h4>Hi</h4>
+                <div class="left">
+                    <h4>Hi</h4>
+                    <span>
+                        see my
+                        <a href="https://github.com/emil-ke" class="GitHubLink">
+                            GitHub profile: <span class="GitHubName"
+                                >emil-ke</span
+                            >
+                        </a>
+                    </span>
+                </div>
                 <p>© 2025. Emil Bertlin.</p>
             </footer>
         </div>
