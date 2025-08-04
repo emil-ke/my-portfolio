@@ -27,6 +27,7 @@ import { projects } from "../data/projects";
         color: var(--accent_l);
         letter-spacing: -1px;
         font-weight: 400;
+        font-size: 1.4rem;
     }
 
     ul li a:hover {
@@ -38,16 +39,31 @@ import { projects } from "../data/projects";
         vertical-align: super;
         margin-left: 0.2rem;
     }
+
+    @media (max-width: 768px) {
+        nav {
+            grid-template-columns: 1fr;
+            padding-right: 0;
+        }
+        ul {
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul li:first-child {
+            padding-left: 0;
+        }
+    }
 </style>
 
 <nav>
     <ul>
         <li>
             <a href="#projects"
-                >PROJECTS<span class="project-number">({projects.length})</span>
+                >projects<span class="project-number">({projects.length})</span>
             </a>
         </li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#contact">contact</a></li>
     </ul>
 </nav>

@@ -19,7 +19,21 @@ import Header from "./Header.astro";
         grid-column-start: 7;
         grid-row-end: -1;
         min-width: 9rem;
-        letter-spacing: -22px;
+        letter-spacing: -27px;
+        font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+        .heroWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .name {
+            font-size: 13rem;
+            font-weight: 300;
+            letter-spacing: -20px;
+        }
     }
 </style>
 
@@ -41,7 +55,7 @@ import Header from "./Header.astro";
         gsap.to(text, {
             duration: 0.75,
             scrambleText: {
-                text: "emil bertlin",
+                text: "e. bertlin",
                 chars: "12$",
                 speed: 0.4,
             },
@@ -52,7 +66,7 @@ import Header from "./Header.astro";
         gsap.to(text, {
             delay: 0.2,
             scrambleText: {
-                text: "e.b",
+                text: "e.b.",
                 chars: "?!",
                 speed: 0.4,
             },
@@ -63,7 +77,7 @@ import Header from "./Header.astro";
         delay: 0.2,
         duration: 0.5,
         scrambleText: {
-            text: "e.b",
+            text: "e.b.",
             chars: "!?$&%",
             speed: 0.4,
         },
