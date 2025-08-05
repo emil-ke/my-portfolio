@@ -2,22 +2,83 @@
     .about {
         width: 100%;
         min-height: 10vh;
-        /*background-image: url("abstract.webp");*/
-        background: var(--text-color);
+        background-color: var(--text-color);
         color: var(--accent);
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
         display: grid;
         grid-template-columns: 4% 1fr 1fr;
         position: relative;
         z-index: 3;
+        position: relative;
+    }
+
+    .midLeft,
+    .midRight {
+        position: absolute;
+        top: 50%;
+        opacity: 70%;
+    }
+
+    .topLine {
+        position: absolute;
+        top: 10%;
+        left: 47%;
+    }
+
+    .topLine span {
+        display: inline-block;
+        transform: rotate(-90deg);
+        opacity: 70%;
+    }
+
+    .bottomLine {
+        position: absolute;
+        bottom: 2%;
+        left: 48%;
+    }
+
+    .topLeft {
+        position: absolute;
+        top: 2%;
+        left: 27%;
+        opacity: 40%;
+        font-size: 1.7em;
+    }
+
+    .midLeft {
+        left: 4%;
+    }
+
+    .midRight {
+        right: 0%;
+    }
+
+    .midLeft .rotated,
+    .midRight .rotated,
+    .topLeft .rotated {
+        display: inline-block;
+        transform: rotate(-90deg);
+        color: black;
+    }
+
+    .topRight {
+        position: absolute;
+        top: 2%;
+        opacity: 70%;
     }
 
     .aboutHeading {
         position: absolute;
         left: 4%;
         top: 5%;
+    }
+
+    .decorationText {
+        position: absolute;
+        bottom: 5%;
+        left: 4%;
+        font-weight: 300;
+        color: var(--accent_d);
+        opacity: 50%;
     }
 
     .aboutText {
@@ -42,27 +103,28 @@
     }
 
     .aboutDesc {
-        width: 70%;
-        line-height: 1.4;
+        width: 74%;
+        line-height: 1.6;
     }
 
-    .aboutDesc:first-child {
-        width: 50%;
-        margin-top: 12rem;
+    .aboutDesc1 {
+        width: 48%;
+        margin-top: 9rem;
     }
 
-    .aboutDesc:nth-child(2) {
-        width: 60%;
+    .aboutDesc2 {
+        width: 58%;
     }
 
-    .aboutDesc:last-child {
-        margin-bottom: 12rem;
+    #contact {
+        margin: 8rem 0;
     }
 
     .img {
         height: 100%;
         width: 100%;
         transition: filter 0.3s ease;
+        background-color: white !important;
     }
 
     .imgOverlay {
@@ -85,9 +147,6 @@
         opacity: 1;
     }
 
-    #contact {
-    }
-
     #email {
         color: var(--background);
         font-weight: bold;
@@ -100,13 +159,34 @@
             width: 100%;
             text-align: left;
         }
+        .decorationText,
+        .imgOverlay,
+        .midLeft,
+        .midRight {
+            display: none;
+        }
+
+        .imgContainer:hover .img {
+            filter: blur(0) brightness(1);
+        }
     }
 </style>
 
 <div class="aboutWrapper">
+    <div class="top"></div>
     <section class="about" id="about">
+        <div class="midLeft">
+            <span class="rotated small">01</span>
+        </div>
         <h5 class="aboutHeading">about</h5>
+        <h3 class="decorationText">__synec<br />doche</h3>
         <div class="aboutText">
+            <p
+                class="aboutDesc"
+                style="opacity: 60%;color: var(--accent_d); opacity: 40%"
+            >
+                _________________________
+            </p>
             <p class="aboutDesc aboutDesc1">
                 I'm a math student at Stockholm University. I'll probably finish
                 next semester, though I might take an academic break instead.
@@ -119,7 +199,7 @@
                 own.
             </p>
 
-            <p class="aboutDesc aboutDesc3">
+            <p class="aboutDesc aboutDesc3" style="margin-top: 7rem;">
                 These days I mostly work in Godot, but I started with web
                 development. I know JavaScript well (especially React and
                 Astro), along with Python, and some C, C++, and Java. Still,
@@ -137,9 +217,22 @@
                 Email me at: <br />
                 <a id="email"></a>
             </p>
+
+            <p
+                class="aboutDesc"
+                style="opacity: 60%;color: var(--accent_d); opacity: 40%"
+            >
+                _________________________
+            </p>
         </div>
 
         <div class="imgContainer">
+            <div class="midLeft" style="padding-left: 2rem;">
+                <span class="rotated small">02</span>
+            </div>
+            <div class="midRight">
+                <div class="rotated small">BASED IN_______STOCKHOLM</div>
+            </div>
             <img
                 src="/shirt-self-portrait3-45_new.webp"
                 alt="A self-portrait."
@@ -176,7 +269,7 @@
     });
 
     gsap.utils.toArray(".aboutDesc").forEach((desc, i) => {
-        if (i === 4) return;
+        if (i >= 5) return;
         gsap.from(desc, {
             y: 30,
             opacity: 0,
