@@ -2,22 +2,22 @@
 export const projects = [
     {
         name: "Interactive Poetry Generator (Python)",
-        description: "A generative tool which turns keywords into semantically unhinged verses.",
+        description: "A tool that turns keywords into semantically unhinged verses.",
         link: "/poetry-generator",
     },
     {
         name: "Drown (3D Godot Game)",
-        description: "A third-person literary survival game made in Godot. The game is still in progress. Things implemented: dialogue system, enemy AI, weapon and resource system, randomized loot spawning, etc.",
+        description: "A third-person survival game made in Godot. (In-progress.)",
         link: "/game",
     },
     {
         name: "Gitignore (C++)",
-        description: "A CLI-tool for adding files and folders to a project's root `.gitignore`. Uses C++17.",
+        description: "A CLI-tool for adding files and folders to a project's root `.gitignore`.",
         link: "/gitignore",
     },
     {
         name: "Assembly Graph for the Norwegian Spruce Genome (Java and Python)",
-        description: "A bioinformatics project for extracting information about an implicitly defined graph from a huge dataset. The graph algorithms are implemented in Java (variations of DFS). This extracted graph data is plotted, specifically histograms for the vertices degrees and component density, using Python with matplotlib and numpy.",
+        description: "A bioinformatics project for extracting information about an implicitly defined graph from a huge dataset.",
         link: "/assembly-graph",
     },
 
