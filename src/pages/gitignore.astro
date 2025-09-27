@@ -13,21 +13,26 @@ import ProjectPage from "../components/ProjectPage.astro";
 			project’s root <code>.gitignore</code> file. Built in C++.
 		</p>
 		<p>
-			I built this because I often forget the syntax for adding stuff to <code
-				>.gitignore</code
-			>, especially when working deep inside nested folders. I also don’t
-			like populating the directory with <code>.gitignore</code> files in every
-			subdirectory. With this I can just run <code
-				>gitignore path/to/file</code
-			> and it adds the correct relative path to the root <code
-				>.gitignore</code
-			>, even if I'm many levels deep in the tree.
+			I built this because I sometimes forget how you're supposed to add
+			stuff to <code>.gitignore</code>, especially when working deep
+			inside nested folders, and I don’t like populating the directory
+			with <code>.gitignore</code> files in every subdirectory. With this project,
+			I can instead just run <code>gitignore path/to/file</code> and it adds
+			the correct relative path to the root <code>.gitignore</code>, even
+			if I'm many levels deep in the tree.
 		</p>
 		<p>
 			It recursively traverses upward to find the nearest <code>.git</code
 			> folder (or lets you pick if there are multiple), computes the relative
 			path, and appends it to the right <code>.gitignore</code> file, unless
 			it’s in already there.
+		</p>
+
+		<p>
+			If there are no collisions (multiple <code>.git</code> folders all the
+			way up the directory tree), it automatically picks the root of the .git
+			and adds the thing to ignore, which is sensible standard-behavior, I
+			think. It only interacts with the user in the case of coliding .git folders.
 		</p>
 
 		<div class="spacer"></div>
