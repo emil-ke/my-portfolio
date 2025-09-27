@@ -13,18 +13,17 @@ import ProjectPage from "../components/ProjectPage.astro";
 			images={["/poetry_screenshot1.webp", "/poetry_screenshot2.webp"]}
 		>
 			<p class="desc">
-				A command-line poetry generator that uses certain poetic
-				devices, mainly assonance, to create semantically oblivious
-				verses.
+				A command-line poetry generator that uses certain poetic devices
+				(assonance, primarily) to create semantically oblivious verses.
 			</p>
 			<p>
-				Even though the results are often janky and nonsensical, if you
-				pick your keywords carefully it can spit out surprisingly
-				cohesive poems with a fragmented ambiguous tone that almost
+				Even though the results are often (very) janky and nonsensical,
+				if you pick your keywords carefully it can spit out surprisingly
+				cohesive poems with a fragmented, ambiguous tone which nearly
 				feels deliberate rather than accidental.
 			</p>
 			<p>
-				It builds a wordbank (JSON) from the NLTK Gutenberg corpus, a
+				It builds a wordbank (in JSON) from the NLTK Gutenberg corpus, a
 				collection of public domain books. Only words with a high enough
 				occurrence frequency are included, and the most common ones are
 				filtered out.
@@ -33,18 +32,21 @@ import ProjectPage from "../components/ProjectPage.astro";
 				Poetic line templates are filled with words from the wordbank
 				alongside the user's keywords. Word choice is driven by vowel
 				overlap (i.e. assonance), which gives the output a kind of
-				weird, singsongy feel.
+				singsongy feel.
 			</p>
 			<p>
 				I'll probably port this tool in its somewhat faulty, sometimes
-				ungrammatical, state, into the game I'm working on (<a
+				ungrammatical state, into the game I'm working on (<a
 					href="/game"
-					style="color: var(--accent_d)">Drown</a
+					class="accentLink">Drown</a
 				>). It would make sense as an in-world handheld computer that
 				generates strange poetry. Since the game's set in a dystopian
-				future, it fits that language itself would be breaking down,
-				post-war, post-climate collapse, scrambled into fragmentary
-				meaning.
+				future, it fits.
+			</p>
+			<p>
+				Not to sound too pretentious, but I think the divide between
+				nonsense and sense is itself interesting, which is why I built
+				this.
 			</p>
 
 			<div class="spacer"></div>
@@ -54,7 +56,7 @@ import ProjectPage from "../components/ProjectPage.astro";
 				<li>
 					See the source code: <a
 						href="https://github.com/emil-ke/poem-p1"
-						style="color: var(--accent_d);"
+						class="accentLink"
 						target="_blank">GitHub/emil-ke/poem-p1</a
 					>
 				</li>
