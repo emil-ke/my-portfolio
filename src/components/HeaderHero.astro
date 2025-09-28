@@ -51,7 +51,43 @@ import Header from "./Header.astro";
 
     const text = document.querySelector(".name");
 
+    let bounceTl; // looping timeline
+
+    function startBounceLoop() {
+        if (bounceTl) return; // already running
+        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
+        bounceTl
+            .to(text, {
+                duration: 0.6,
+                scrambleText: {
+                    text: "e.b!",
+                    chars: "?!",
+                    speed: 0.3,
+                },
+                ease: "power2.inOut",
+            })
+            .to({}, { duration: 3 })
+            .to(text, {
+                duration: 0.6,
+                scrambleText: {
+                    text: "e.b.",
+                    chars: "?!",
+                    speed: 0.3,
+                },
+                ease: "power2.inOut",
+            })
+            .to({}, { duration: 3 });
+    }
+
+    function stopBounceLoop() {
+        if (bounceTl) {
+            bounceTl.kill();
+            bounceTl = null;
+        }
+    }
+
     text.addEventListener("mouseenter", () => {
+        stopBounceLoop(); // kill loop while hovering
         gsap.to(text, {
             duration: 0.75,
             scrambleText: {
@@ -70,6 +106,7 @@ import Header from "./Header.astro";
                 chars: "?!",
                 speed: 0.4,
             },
+            onComplete: startBounceLoop,
         });
     });
 
@@ -82,23 +119,13 @@ import Header from "./Header.astro";
             speed: 0.4,
         },
         ease: "power2.inOut",
+        onComplete: startBounceLoop,
     });
 
     gsap.to(".heroWrapper", {
-        delay: 0.9,
+        delay: 1.2,
         duration: 0.45,
         ease: "power3.inOut",
         height: innerHeight / 3,
-    });
-
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 4, yoyo: true });
-    tl.to(text, {
-        duration: 0.4,
-        scrambleText: {
-            text: "e.b!",
-            chars: "?!",
-            speed: 0.3,
-        },
-        ease: "power2.inOut",
     });
 </script>
