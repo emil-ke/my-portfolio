@@ -40,7 +40,7 @@ import Header from "./Header.astro";
 <>
     <Header />
     <div class="heroWrapper">
-        <h1 class="name">emil</h1>
+        <h1 class="name">e.b.</h1>
     </div>
 </>
 
@@ -55,8 +55,8 @@ import Header from "./Header.astro";
         gsap.to(text, {
             duration: 0.75,
             scrambleText: {
-                text: "e. bertlin",
-                chars: "12$",
+                text: "emil bertlin",
+                chars: "!=$",
                 speed: 0.4,
             },
         });
@@ -89,5 +89,16 @@ import Header from "./Header.astro";
         duration: 0.45,
         ease: "power3.inOut",
         height: innerHeight / 3,
+    });
+
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 4, yoyo: true });
+    tl.to(text, {
+        duration: 0.4,
+        scrambleText: {
+            text: "e.b!",
+            chars: "?!",
+            speed: 0.3,
+        },
+        ease: "power2.inOut",
     });
 </script>
