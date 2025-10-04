@@ -17,42 +17,52 @@ import ProjectPage from "../components/ProjectPage.astro";
 				(assonance, primarily) to create semantically oblivious verses.
 			</p>
 			<p>
-				Even though the results are often (very) janky and nonsensical,
-				if you pick your keywords carefully it can spit out surprisingly
-				cohesive poems with a fragmented, ambiguous tone which nearly
-				feels deliberate rather than accidental.
-			</p>
-			<p>
-				It builds a wordbank (in JSON) from the NLTK Gutenberg corpus, a
-				collection of public domain books. Only words with a high enough
-				occurrence frequency are included, and the most common ones are
-				filtered out.
-			</p>
-			<p>
-				Poetic line templates are filled with words from the wordbank
-				alongside the user's keywords. Word choice is driven by vowel
-				overlap (i.e. assonance), which gives the output a kind of
-				singsongy feel.
-			</p>
-			<p>
-				I'll probably port this tool in its somewhat faulty, sometimes
-				ungrammatical state, into the game I'm working on (<a
-					href="/game"
-					class="accentLink">Drown</a
-				>). It would make sense as an in-world handheld computer that
-				generates strange poetry. Since the game's set in a dystopian
-				future, it fits.
+				Even though the results are often very janky and nonsensical, if
+				you pick your keywords carefully it can spit out surprisingly
+				cohesive poems with a fragmented, ambiguous tone, making it feel
+				deliberate rather than accidental, at times. It's like a kind of
+				Rorschach blot of syntax, carrying the body of language without
+				the soul, and yet meaning can emerge through the cracks (e.g.,
+				"where agar attacks, the ability waits").
 			</p>
 			<p>
 				Not to sound all la-di-da pretentious or whatever but I think
 				the divide between nonsense and sense is itself interesting,
-				which is why I built this.
+				which is why I built this. Humans are nearly pathologically
+				allergic to senselessness. We fill in blanks compulsively. We
+				see faces in power outlets. I.e. nonesense often gets
+				metabolized into coherence, even if the intent of a sentence is
+				utterly meaningless (Chomsky famously constructed, "Colorless
+				green ideas sleep furiously," as an exmaple of a
+				grammatically-correct, senseless statement. John Hollander,
+				inspired by it, came up with this poem: "Curiously deep, the
+				slumber of crimson thoughts: / While breathless, in stodgy
+				viridian / Colorless green ideas sleep furiously").
+			</p>
+
+			<p>
+				As for who it works: A wordbank (JSON) is built from the NLTK
+				Gutenberg corpus, a collection of public domain books; only
+				words with a high enough occurrence frequency are included, and
+				the most common ones are filtered out; manually-constructed line
+				templates are filled with words from the wordbank alongside the
+				user's keywords, which are picked by the main algorithm, in
+				which word choice is driven by vowel overlap (assonance), giving
+				the output a kind of singsongy feel.
+			</p>
+			<p>
+				I'll probably port this—in its faulty, sometimes ungrammatical
+				state—into the game I'm working on (<a
+					href="/game"
+					class="accentLink">Drown</a
+				>). It would make sense as an in-world handheld computer. Since
+				the game's set in a dystopian future, the strangeness of the
+				language would fit.
 			</p>
 
 			<div class="spacer"></div>
 
 			<ul>
-				<li>Built with Python and nltk</li>
 				<li>
 					See the source code: <a
 						href="https://github.com/emil-ke/poem-p1"
