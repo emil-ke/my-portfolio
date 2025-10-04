@@ -55,7 +55,7 @@ import Header from "./Header.astro";
 
     function startBounceLoop() {
         if (bounceTl) return; // already running
-        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
+        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.4 });
         bounceTl
             .to(text, {
                 duration: 0.6,
@@ -66,7 +66,7 @@ import Header from "./Header.astro";
                 },
                 ease: "power2.inOut",
             })
-            .to({}, { duration: 3 })
+            .to({}, { duration: 2 })
             .to(text, {
                 duration: 0.6,
                 scrambleText: {
@@ -76,7 +76,7 @@ import Header from "./Header.astro";
                 },
                 ease: "power2.inOut",
             })
-            .to({}, { duration: 3 });
+            .to({}, { duration: 2 });
     }
 
     function stopBounceLoop() {
