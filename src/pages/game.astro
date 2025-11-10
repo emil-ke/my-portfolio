@@ -8,41 +8,21 @@ import ProjectPage from "../components/ProjectPage.astro";
 <Layout>
 	<StickyMenu />
 	<ProjectPage title="drown: a 3d godot game" images={[]}>
+		<!--The copy for this is terrible. TODO: fix.-->
 		<p>
-			(Update October 2025: I've since switched to Unreal Engine 5 for
-			this projects, so I'm currently rewriting everything. I'm also
-			redesigning the architecture and reimagining some features.)
-		</p>
-
-		<p>
-			(Written in August 2025:) This is a work-in-progress third-person
+			This is a work-in-progress third-person
 			survival game made in Godot 4. I've mostly focused on systems:
-			dialogue, AI, item and inventory logic, randomized loot, etc. All
-			visuals are very crude, animations are placeholders, and the level
+			branching dialogue, AI, item and inventory logic, randomized loot, etc.
+			For now, all visuals are crude, and the animations are placeholders, and the level
 			is just a greyboxed test world.
 		</p>
 		<p>
-			This is certainly not in a demo-ready state. Still, it’s the most
-			complex project I’ve worked on so far. Implemented systems include:
-			a working dialogue system, a functional (though basic) enemy finite
-			state machine AI (which I plan to rewrite using GOAP), an inventory
-			system with resource and weapon logic, and a crafting system that's
-			currently basic but wired. Loot is randomized throughout the levels
-			with manually set spawn points using weighted probabilities (e.g.,
-			ammo boxes generate a random amount of bullets between 1 and 7, with
-			rare values weighted accordingly). The aiming system includes
-			realistic-ish swaying and weapon recoil; the shooting system
-			includes proper ammo handling, shooting sounds, and empty-mag click
-			feedback. The flashlight system includes toggling and movement sway,
-			as well as randomized battery flickers. The current testing world is
-			made up of simple blocked-out houses, a gas station, etc. Zombies
-			float toward the player (they're not animated yet), and can be shot
-			and killed.
-		</p>
-
-		<p>
-			While making this, I've learned some Blender as well, modeling,
-			texturing, animation, and all that jazz.
+			I've learned a bunch of stuff while making this, everything from 
+			architecture to shaders. It has been enriching. At times, it has been
+			difficult (especially struggling through Blender). But it has been fun to keep
+			on churning when things get hard. I could meander on about what I've made and
+			learned, but the video below shows the current state of things better than I can
+			accomplish in words.
 		</p>
 
 		<div class="spacer"></div>
@@ -52,7 +32,7 @@ import ProjectPage from "../components/ProjectPage.astro";
 			difficult to showcase my work in this case because I have almost
 			exclusively worked on non-visual things, but I've written a few
 			thousand lines of code for this. For the branching dialogue system, I
-			wrote a helper program with Svelte Flow and Vite (see it on GitHub: <a
+			also wrote a helper program with Svelte Flow and Vite (see it on GitHub: <a
 						href="https://github.com/emil-ke/Ramosa"
 						class="accentLink"
 						target="_blank">GitHub/emil-ke/Ramosa</a
