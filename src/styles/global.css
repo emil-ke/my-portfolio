@@ -135,6 +135,9 @@ body::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
 }
 
+iframe {
+	border: none;
+}
 
 /* Lenis setup */
 html.lenis,
