@@ -6,19 +6,11 @@ import Projects from "../components/Projects.astro";
 import About from "../components/About.astro";
 ---
 
-<style>
-	.pageContent {
-		position: relative;
-		z-index: 1;
-		background: var(--accent_l);
-		margin-bottom: var(--footer-h);
-		min-height: 100vh;
-	}
-</style>
-
 <Layout>
-	<HeaderHero />
-	<StickyMenu showOnScroll="true" />
-	<Projects />
-	<About />
+  <div>
+		<HeaderHero />
+		<StickyMenu showOnScroll="true" />
+    <Projects />
+    <About />
+  </div>
 </Layout>
