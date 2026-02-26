@@ -3,129 +3,129 @@ import Header from "./Header.astro";
 ---
 
 <style>
-    .heroWrapper {
-        height: 64vh;
-        width: 100%;
-        background-color: var(--accent);
-        display: grid;
-        grid-template-columns: 2% repeat(10, 1fr) 2%;
-        grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-    }
-    .name {
-        color: var(--accent_l);
-        margin: 0;
-        grid-column-start: 7;
-        grid-row-end: -1;
-        min-width: 9rem;
-        letter-spacing: -27px;
-        font-weight: 300;
-    }
+	.heroWrapper {
+		height: 64vh;
+		width: 100%;
+		background-color: var(--accent);
+		display: grid;
+		grid-template-columns: 2% repeat(10, 1fr) 2%;
+		grid-template-rows: repeat(3, 1fr);
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+	}
+	.name {
+		color: var(--accent_l);
+		margin: 0;
+		grid-column: 7;
+		grid-row: 3;
+		min-width: 9rem;
+		letter-spacing: -27px;
+		font-weight: 300;
+	}
 
-    @media (max-width: 768px) {
-        .heroWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .name {
-            font-size: 13rem;
-            font-weight: 300;
-            letter-spacing: -20px;
-        }
-    }
+	@media (max-width: 768px) {
+		.heroWrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.name {
+			font-size: 13rem;
+			font-weight: 300;
+			letter-spacing: -20px;
+		}
+	}
 </style>
 
 <>
-    <Header />
-    <div class="heroWrapper">
-        <h1 class="name">e.b.</h1>
-    </div>
+	<Header />
+	<div class="heroWrapper">
+		<h1 class="name">e.b.</h1>
+	</div>
 </>
 
 <script>
-    import { gsap } from "gsap";
-    import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
-    gsap.registerPlugin(ScrambleTextPlugin);
+	import { gsap } from "gsap";
+	import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+	gsap.registerPlugin(ScrambleTextPlugin);
 
-    const text = document.querySelector(".name");
+	const text = document.querySelector(".name");
 
-    let bounceTl; // looping timeline
+	let bounceTl; // looping timeline
 
-    function startBounceLoop() {
-        if (bounceTl) return;
-        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.3 });
-        bounceTl
-            .to(text, {
-                duration: 0.6,
-                scrambleText: {
-                    text: "e.b!",
-                    chars: "?!",
-                    speed: 0.3,
-                },
-                ease: "power2.inOut",
-            })
-            .to({}, { duration: 2 })
-            .to(text, {
-                duration: 0.6,
-                scrambleText: {
-                    text: "e.b.",
-                    chars: "?!",
-                    speed: 0.3,
-                },
-                ease: "power2.inOut",
-            })
-            .to({}, { duration: 2 });
-    }
+	function startBounceLoop() {
+		if (bounceTl) return;
+		bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 2.0 });
+		bounceTl
+			.to(text, {
+				duration: 0.3,
+				scrambleText: {
+					text: "e.b!",
+					chars: "+;",
+					speed: 0.3,
+				},
+				ease: "power2.inOut",
+			})
+			.to({}, { duration: 2 })
+			.to(text, {
+				duration: 0.6,
+				scrambleText: {
+					text: "e.b.",
+					chars: "!*",
+					speed: 0.3,
+				},
+				ease: "power2.inOut",
+			})
+			.to({}, { duration: 2 });
+	}
 
-    function stopBounceLoop() {
-        if (bounceTl) {
-            bounceTl.kill();
-            bounceTl = null;
-        }
-    }
+	function stopBounceLoop() {
+		if (bounceTl) {
+			bounceTl.kill();
+			bounceTl = null;
+		}
+	}
 
-    text.addEventListener("mouseenter", () => {
-        stopBounceLoop(); // kill loop while hovering
-        gsap.to(text, {
-            duration: 0.75,
-            scrambleText: {
-                text: "*emil",
-                chars: "!=$*",
-                speed: 0.3,
-            },
-        });
-    });
+	text.addEventListener("mouseenter", () => {
+		stopBounceLoop(); // kill loop while hovering
+		gsap.to(text, {
+			duration: 1.75,
+			scrambleText: {
+				text: "*emil",
+				chars: "=*{",
+				speed: 0.3,
+			},
+		});
+	});
 
-    text.addEventListener("mouseleave", () => {
-        gsap.to(text, {
-            delay: 0.2,
-            scrambleText: {
-                text: "e.b.",
-                chars: "?!*",
-                speed: 0.3,
-            },
-            onComplete: startBounceLoop,
-        });
-    });
+	text.addEventListener("mouseleave", () => {
+		gsap.to(text, {
+			delay: 0.2,
+			scrambleText: {
+				text: "e.b.",
+				chars: "?!*",
+				speed: 0.3,
+			},
+			onComplete: startBounceLoop,
+		});
+	});
 
-    gsap.to(text, {
-        delay: 0.2,
-        duration: 0.5,
-        scrambleText: {
-            text: "e.b.",
-            chars: "!?$*",
-            speed: 0.3,
-        },
-        ease: "power2.inOut",
-        onComplete: startBounceLoop,
-    });
+	gsap.to(text, {
+		delay: 0.2,
+		duration: 0.5,
+		scrambleText: {
+			text: "e.b.",
+			chars: "*",
+			speed: 0.3,
+		},
+		ease: "power2.inOut",
+		onComplete: startBounceLoop,
+	});
 
-    gsap.to(".heroWrapper", {
-        delay: 1.2,
-        duration: 0.45,
-        ease: "power3.inOut",
-        height: innerHeight / 3,
-    });
+	gsap.to(".heroWrapper", {
+		delay: 1.2,
+		duration: 0.45,
+		ease: "power3.inOut",
+		height: innerHeight / 3,
+	});
 </script>

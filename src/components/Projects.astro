@@ -4,90 +4,90 @@ import { projects } from "../data/projects";
 ---
 
 <style>
-    .projects {
-        display: grid;
-        grid-template-columns: 4% 1fr 1fr 4%;
-        grid-template-rows: auto 1fr;
-        position: relative;
-        margin: 6rem 0 12rem 0;
-        z-index: 1;
-    }
+	.projects {
+		display: grid;
+		grid-template-columns: 4% 1fr 1fr 4%;
+		grid-template-rows: auto 1fr;
+		position: relative;
+		margin: 6rem 0 12rem 0;
+		z-index: 1;
+	}
 
-    .projectsHeading {
-        position: absolute;
-        z-index: -2;
-        color: var(--accent_l);
-        top: 40%;
-        left: 4%;
-    }
+	.projectsHeading {
+		position: absolute;
+		z-index: -2;
+		color: var(--accent_l);
+		top: 40%;
+		left: 4%;
+	}
 
-    .projectCard.leftAligned {
-        text-align: left;
-        justify-self: start;
-    }
-    .projectCard.rightAligned {
-        text-align: right;
-        justify-self: end;
-    }
+	.projectCard.leftAligned {
+		text-align: left;
+		justify-self: start;
+	}
+	.projectCard.rightAligned {
+		text-align: right;
+		justify-self: end;
+	}
 
-    @media (max-width: 768px) {
-        .projects {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .projectsHeading {
-            top: 0;
-            left: 11%;
-        }
-        .projectCard {
-            padding-top: 8rem;
-            width: 90%;
-            margin: 0 auto;
-        }
+	@media (max-width: 768px) {
+		.projects {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.projectsHeading {
+			top: 0;
+			left: 11%;
+		}
+		.projectCard {
+			padding-top: 8rem;
+			width: 90%;
+			margin: 0 auto;
+		}
 
-        .projectCard:first-child {
-            padding-top: 12rem;
-        }
-        .projectCard.rightAligned {
-            text-align: start;
-            justify-self: start;
-        }
-    }
+		.projectCard:first-child {
+			padding-top: 12rem;
+		}
+		.projectCard.rightAligned {
+			text-align: start;
+			justify-self: start;
+		}
+	}
 </style>
 
 <section class="projects" id="projects">
-    <h5 class="projectsHeading"><span>projects</span></h5>
-    {
-        projects.map((project, idx) => (
-            <div
-                class={`projectCard ${idx % 2 === 0 ? "leftAligned" : "rightAligned"}`}
-                style={`grid-column: ${idx % 2 === 0 ? 3 : 2}; grid-row: ${idx + 2};`}
-            >
-                <Card
-                    name={project.name}
-                    description={project.description}
-                    link={project.link}
-                />
-            </div>
-        ))
-    }
+	<h5 class="projectsHeading"><span>projects</span></h5>
+	{
+		projects.map((project, idx) => (
+			<div
+				class={`projectCard ${idx % 2 === 0 ? "leftAligned" : "rightAligned"}`}
+				style={`grid-column: ${idx % 2 === 0 ? 3 : 2}; grid-row: ${idx + 2};`}
+			>
+				<Card
+					name={project.name}
+					description={project.description}
+					link={project.link}
+				/>
+			</div>
+		))
+	}
 </section>
 
 <script>
-    import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    gsap.registerPlugin(ScrollTrigger);
+	import gsap from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".projectsHeading", {
-        scrollTrigger: ".projectsHeading",
-        opacity: 0,
-    });
+	gsap.from(".projectsHeading", {
+		scrollTrigger: ".projectsHeading",
+		opacity: 0,
+	});
 
-    gsap.to(".projectsHeading", {
-        scrollTrigger: ".projectsHeading",
-        opacity: 1,
-    });
+	gsap.to(".projectsHeading", {
+		scrollTrigger: ".projectsHeading",
+		opacity: 1,
+	});
 </script>
