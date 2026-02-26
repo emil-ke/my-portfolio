@@ -1,20 +1,17 @@
 <style>
-	.footerOuter {
-		position: relative;
-		height: 200px;
-		z-index: 1;
+	.siteFooter {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background: var(--accent_d);
+		height: var(--footer-h);
+		width: 100%;
+		z-index: 0;
+		transform: translateZ(0);
+		will-change: transform;
 	}
 
 	.footerWrapper {
-		position: sticky;
-		bottom: 0;
-		height: 200px;
-		width: 100%;
-	}
-
-	footer {
-		background: var(--accent_d);
-		color: var(--accent);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -32,7 +29,8 @@
 	}
 
 	.GitHubLink {
-		color: var(--accent);
+		color: var(--text-color)
+		text-decoration: none;
 		white-space: nowrap;
 	}
 
@@ -41,12 +39,11 @@
 	}
 
 	.GitHubLink:hover > .GitHubName {
-		color: var(--accent_l);
+		color: var(--accent);
 	}
 
 	.GitHubName {
-		text-decoration: underline;
-		color: var(--text-color);
+		color: var(--background);
 	}
 
 	@media (max-width: 768px) {
@@ -62,20 +59,17 @@
 	}
 </style>
 
-<div class="footerOuter">
+<footer class="siteFooter">
 	<div class="footerWrapper">
-		<footer>
-			<div class="left">
-				<h4>Hi,</h4>
-				<span>
-					have a peek at my
-					<a href="https://github.com/emil-ke" class="GitHubLink">
-						GitHub profile:
-						<span class="GitHubName">github.com/emil-ke</span>
-					</a>
-				</span>
-			</div>
-			<p>© 2026. Emil Bertlin</p>
-		</footer>
+		<div class="left">
+			<h4>Hi,</h4>
+			<span>
+				have a peek at my
+				<a href="https://github.com/emil-ke" class="GitHubLink">
+					GitHub: <span class="GitHubName accentLink">github.com/emil-ke</span>
+				</a>
+			</span>
+		</div>
+		<p>© 2026. Emil Bertlin</p>
 	</div>
-</div>
+</footer>

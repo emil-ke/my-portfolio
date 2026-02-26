@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root,
 [data-theme="dark"] {
 	--background: #080a0e;
@@ -11,6 +12,7 @@
 	--accent-brighter: #FF4242;
 	--accent_l: #eca19b;
 	--accent_d: #ff5f6c;
+	--footer-h: 200px
 }
 
 * {
@@ -34,6 +36,11 @@ body {
 
 html {
 	scroll-behavior: smooth;
+}
+
+html,
+body {
+	height: 100%;
 }
 
 h1,
@@ -142,6 +149,15 @@ body::-webkit-scrollbar-thumb:hover {
 
 iframe {
 	border: none;
+}
+
+.pageContent {
+	position: relative;
+	z-index: 1;
+	background: var(--background);
+	margin-bottom: var(--footer-h);
+	min-height: 100vh;
+  box-shadow: 0px 6px 100px rgba(0,0,0,0.5);
 }
 
 /* Lenis setup */
