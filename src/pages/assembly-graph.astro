@@ -15,42 +15,40 @@ import ProjectPage from "../components/ProjectPage.astro";
 		]}
 	>
 		<p>
-			This project processes a large overlapping dataset from the
-			Norwegian spruce genome to extract information about an implicitly
-			defined graph. The graph is defined in the data through
-			edges which are described by long string identifiers in an `.m4`
-			file (around 49 million lines), which first has to be filtered and
-			cleaned. After preprocessing, a Java program constructs the graph
-			using adjacency lists and assigns compact integer IDs to each unique
-			node for space efficiency.
+			This project processes a large, overlapping dataset from the Norwegian
+			spruce genome to extract information about an implicitly defined graph.
+			The graph is defined in the data through edges which are described by long
+			string identifiers in an `.m4` file (around 49 million lines), which first
+			has to be filtered and cleaned. After preprocessing, a Java program
+			constructs the graph using adjacency lists and assigns compact integer IDs
+			to each unique vertex for space efficiency.
 		</p>
 
 		<p>
-			A degree distribution is calculated by iterating over the adjacency
-			list and counting neighbors for each node; a DFS-based algorithm is
-			used to count connected components with at least three nodes; and
-			another DFS-based method calculates component density, defined as
-			the ratio between actual and possible edges for each component. All
-			core algorithms are written in Java using standard collections and
-			file I/O.
+			A degree distribution is calculated by iterating over the adjacency list
+			and counting incident edges for each vertex; a DFS-based algorithm is used
+			to count connected components with at least three vertices; and another
+			DFS-based method calculates component density (the ratio between actual
+			and possible edges for each component). All core algorithms are written in
+			Java using standard collections.
 		</p>
 
 		<p>
 			The resulting data is written to text files and then visualized with
-			Python using matplotlib and numpy. Histograms are generated for the
-			degree distribution and component densities.
+			Python using matplotlib and numpy. Histograms are generated for the degree
+			distribution and component densities.
 		</p>
 
 		<p>
-			The Git repo includes a notebook for what I did on given days as
-			well as a full report in the <code>doc</code> directory.
+			The Git repo includes a notebook for what I did on given days as well as a
+			full report in the <code>doc</code> directory.
 		</p>
 
 		<div class="spacer"></div>
 
 		<ul>
 			<li>
-				See the source code: <a
+				Source code: <a
 					href="https://github.com/emil-ke/genome-assembly-graph"
 					class="accentLink"
 					target="_blank">GitHub/emil-ke/genome-assembly-graph</a

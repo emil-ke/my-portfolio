@@ -54,8 +54,8 @@ import Header from "./Header.astro";
     let bounceTl; // looping timeline
 
     function startBounceLoop() {
-        if (bounceTl) return; // already running
-        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.4 });
+        if (bounceTl) return;
+        bounceTl = gsap.timeline({ repeat: -1, repeatDelay: 0.3 });
         bounceTl
             .to(text, {
                 duration: 0.6,
@@ -91,9 +91,9 @@ import Header from "./Header.astro";
         gsap.to(text, {
             duration: 0.75,
             scrambleText: {
-                text: "emil bertlin",
-                chars: "!=$",
-                speed: 0.4,
+                text: "*emil",
+                chars: "!=$*",
+                speed: 0.3,
             },
         });
     });
@@ -103,8 +103,8 @@ import Header from "./Header.astro";
             delay: 0.2,
             scrambleText: {
                 text: "e.b.",
-                chars: "?!",
-                speed: 0.4,
+                chars: "?!*",
+                speed: 0.3,
             },
             onComplete: startBounceLoop,
         });
@@ -115,8 +115,8 @@ import Header from "./Header.astro";
         duration: 0.5,
         scrambleText: {
             text: "e.b.",
-            chars: "!?$&%",
-            speed: 0.4,
+            chars: "!?$*",
+            speed: 0.3,
         },
         ease: "power2.inOut",
         onComplete: startBounceLoop,

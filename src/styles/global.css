@@ -1,35 +1,39 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');*/
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 :root,
 [data-theme="dark"] {
-    --background: #0c0c0e;
-    --text-color: #faebe1;
-    --text-color-alt: #ffc8d9;
-    --accent: #96304f;
-    --accent-brighter: #fc8686;
-    --accent_l: #27060e;
-    --accent_d: #ff5f6c;
+	--background: #080a0e;
+	--background_alt: #262027;
+	--text-color: #faebe1;
+	--text-color-alt: #ffc8d9;
+	/*--accent: #96304f;*/
+	--accent: #553d56;
+	--accent-brighter: #FF4242;
+	--accent_l: #eca19b;
+	--accent_d: #ff5f6c;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
+	box-sizing: border-box;
+	padding: 0;
 }
 
 body {
-    font-family: "Inter", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background);
-    color: var(--text-color);
-    font-size: 20px;
-    line-height: 1.6;
-    overflow-x: hidden;
+	font-family: "Inter", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	background-color: var(--background);
+	color: var(--text-color);
+	font-size: 20px;
+	line-height: 1.6;
+	overflow-x: hidden;
+	position: relative;
+	z-index: 2;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 h1,
@@ -38,101 +42,102 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 0.5rem 0;
-    font-weight: normal;
-    line-height: 1;
+	margin: 0 0 0.5rem 0;
+	font-weight: normal;
+	line-height: 1;
 }
 
 h1 {
-    font-size: 17.942rem;
-    font-weight: 600;
+	font-size: 17.942rem;
+	font-weight: 600;
 }
 
 h2 {
-    font-size: 11.089rem;
-    font-weight: 500;
+	font-size: 11.089rem;
+	font-weight: 500;
 }
 
 h3 {
-    font-size: 6.854rem;
+	font-size: 6.854rem;
 }
 
 h4 {
-    font-size: 4.236rem;
+	font-size: 4.236rem;
 }
 
 h5 {
-    font-size: 2.618rem;
+	font-size: 2.618rem;
 }
 
 h6 {
-    font-size: 1.618rem;
+	font-size: 1.618rem;
 }
 
 a {
-    color: var(--text-color);
-    text-decoration: none;
+	color: var(--text-color);
+	text-decoration: none;
 }
 
 ul {
-    list-style: none;
+	list-style: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    user-select: none;
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+	user-select: none;
 }
 
 .spacer {
-    height: 4rem;
-    width: 100%;
+	height: 4rem;
+	width: 100%;
 }
 
 
 .tight-letters {
-    letter-spacing: -6px;
+	letter-spacing: -6px;
 }
 
 .accent-color {
-    color: var(--accent);
+	color: var(--accent);
 }
 
 .small {
-    font-size: 0.7em;
+	font-size: 0.7em;
 }
 
 .smaller {
-    font-size: 0.3em;
+	font-size: 0.3em;
 }
 
 .accentLink {
-    color: var(--accent_d);
-    transition: all 0.3s ease;
+	color: var(--accent_d);
+	transition: all 0.3s ease;
 }
 
 
 .accentLink:hover {
-    text-decoration: underline;
-    color: var(--accent-brighter);
+	text-decoration: underline;
+	color: var(--accent-brighter);
 }
 
 /* Scrollbar */
 body::-webkit-scrollbar {
-    width: 8px;
+	width: 2px;
 }
 
 body::-webkit-scrollbar-track {
-    background: var(--background);
+	background: var(--background);
 }
 
 body::-webkit-scrollbar-thumb {
-    background: var(--accent_l);
+	background: var(--accent_l);
+	border-radius: 2px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
+	background: var(--accent);
 }
 
 iframe {
@@ -142,21 +147,21 @@ iframe {
 /* Lenis setup */
 html.lenis,
 html.lenis body {
-    height: auto;
+	height: auto;
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+	scroll-behavior: auto !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+	overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .lenis.lenis-smooth iframe {
-    pointer-events: none;
+	pointer-events: none;
 }

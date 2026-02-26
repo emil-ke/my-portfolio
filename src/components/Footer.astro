@@ -1,95 +1,81 @@
 <style>
-    .footerOuter {
-        position: relative;
-        height: 200px;
-        clip-path: polygon(
-            0% 0%,
-            100% 0%,
-            100% 100%,
-            0% 100%
-        ); /* doesn't seem to work on Firefox */
-        z-index: 1;
-    }
+	.footerOuter {
+		position: relative;
+		height: 200px;
+		z-index: 1;
+	}
 
-    .footerInner {
-        position: relative;
-        height: calc(100vh + 200px);
-        top: -100vh;
-    }
+	.footerWrapper {
+		position: sticky;
+		bottom: 0;
+		height: 200px;
+		width: 100%;
+	}
 
-    .footerWrapper {
-        position: sticky;
-        top: calc(100vh - 200px);
-        height: 200px;
-        width: 100%;
-    }
+	footer {
+		background: var(--accent_d);
+		color: var(--accent);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 4%;
+		height: 100%;
+		width: 100%;
+	}
 
-    footer {
-        background: var(--accent_l);
-        color: var(--accent);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 4% 1rem 4%;
-        height: 100%;
-        width: 100%;
-    }
-    .left {
-        width: 30%;
-        display: flex;
-        align-items: center;
-        gap: 1.5em;
-        font-size: 1.1em;
-    }
+	.left {
+		width: 50%;
+		display: flex;
+		align-items: baseline;
+		gap: 1.5em;
+		font-size: 1.1em;
+	}
 
-    .GitHubLink {
-        color: var(--accent);
-        white-space: nowrap;
-    }
+	.GitHubLink {
+		color: var(--accent);
+		white-space: nowrap;
+	}
 
-    .GitHubLink > .GitHubName {
-        transition: all 0.2s ease-out;
-    }
+	.GitHubLink > .GitHubName {
+		transition: color 0.2s ease-out;
+	}
 
-    .GitHubLink:hover > .GitHubName {
-        color: var(--text-color);
-    }
+	.GitHubLink:hover > .GitHubName {
+		color: var(--accent_l);
+	}
 
-    .GitHubName {
-        text-decoration: underline;
-        color: var(--accent_d);
-    }
+	.GitHubName {
+		text-decoration: underline;
+		color: var(--text-color);
+	}
 
-    @media (max-width: 768px) {
-        .left {
-            width: 100%;
-        }
-        footer {
-            font-size: 0.9em;
-        }
-        h4 {
-            display: none;
-        }
-    }
+	@media (max-width: 768px) {
+		.left {
+			width: 100%;
+		}
+		footer {
+			font-size: 0.9em;
+		}
+		h4 {
+			display: none;
+		}
+	}
 </style>
 
 <div class="footerOuter">
-    <div class="footerInner">
-        <div class="footerWrapper">
-            <footer>
-                <div class="left">
-                    <h4>Hi,</h4>
-                    <span>
-                        have a peek at my
-                        <a href="https://github.com/emil-ke" class="GitHubLink">
-                            GitHub profile: <span class="GitHubName"
-                                >emil-ke</span
-                            >
-                        </a>
-                    </span>
-                </div>
-                <p>© 2025. Emil Bertlin</p>
-            </footer>
-        </div>
-    </div>
+	<div class="footerWrapper">
+		<footer>
+			<div class="left">
+				<h4>Hi,</h4>
+				<span>
+					have a peek at my
+					<a href="https://github.com/emil-ke" class="GitHubLink">
+						GitHub profile:
+						<span class="GitHubName">github.com/emil-ke</span>
+					</a>
+				</span>
+			</div>
+			<p>© 2026. Emil Bertlin</p>
+		</footer>
+	</div>
 </div>

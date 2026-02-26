@@ -7,51 +7,88 @@ import ProjectPage from "../components/ProjectPage.astro";
 
 <Layout>
 	<StickyMenu />
-	<ProjectPage title="drown: a 3d godot game" images={[]}>
+	<ProjectPage
+		title="ASSAIL!"
+		images={["/game1.png", "/game2.png", "/game3.png", "/game4.png"]}
+	>
 		<p>
-			This is a work in progress third person survival game built in Godot 4. My
-			focus has been on core systems: dialogue that branches, basic AI, items
-			and inventory logic, random loot. The visual side is rough for now. The
-			animations are placeholders. The level is mostly just a greyboxed test
-			space.
+			ASSAIL! is an atmospheric psychological thriller about a man reeled back
+			to his brother's abandoned house while loosing grasp on reality. You
+			search the quiet, confront brutality, and push deeper into a night that
+			keeps on taking.
+		</p>
+
+		<p>
+			This is my first Godot game. I'm aiming to release it in a couple of
+			months. As I learn by doing, I've made basically everything by myself; all code is handcrafted;
+			all music and sounds are by me; something like 95% of the 3D models and
+			textures are original.
 		</p>
 		<p>
-			I have learned a lot while building this, from architecture to shader
-			work, and plenty of trial and error. Still, the project has been
-			rewarding. The video below shows the current state of the game better than
-			a long explanation would.
+			I was drawn to games since it's a kind of cesspool for my interests. My
+			academic background is in math and CS, but I have somewhat variegated
+			interests. I suppose I'm pretty polymathic. For instance, I have a huge
+			interest in writing and have worked in literary fiction for a few years.
+			My first artistic pursuit was music, which I began playing and producing
+			at 16 or so. I'm also passionate about visual art, and that eventually
+			roped me into 3D work.
 		</p>
-		<div class="spacer"></div>
-		<p style="padding-bottom: 1rem;">
-			The mechanics demo below is thin on polish because the animation setup is
-			not ready. Most of my time has gone into systems that do not show well on
-			video. The project has several thousand lines of code but the repository
-			is private. <br /><br /> My GitHub houses a few related projects. For the branching
-			dialogue system I built a helper tool with Svelte Flow and Vite (see it on
-			GitHub: <a
+		<p>
+			As Godot is a very lean engine, I've had to implement a lot of necessary
+			systems and tools. An important one I've made recently is a pipeline for
+			fractured objects: with it, I mark a "base mesh" inside the <code
+				>.blend</code
+			>-file and all other meshes should be cell-fractured pieces of that base. A
+			custom import script auto-creates the necessary scene inside Godot, so I
+			don't need any manual intervention to create breakable objects. Another
+			crucial thing I've made is a material blending shader system, which uses
+			the different UV channels in order to blend materials via image masks.
+			Here, for the normal blending, I implemented reoriented normal mapping.
+		</p>
+		<p>
+			This game is not open sourced, but my GitHub houses a few related
+			projects:
+			<br />
+			<br />
+			<a
 				href="https://github.com/emil-ke/Ramosa"
 				class="accentLink"
 				target="_blank">GitHub/emil-ke/Ramosa</a
-			>). I also wrote a Godot scene switcher with fuzzy matching inspired by
-			fzf and Telescope.nvim (demo on the GitHub page: <a
+			> — A Svelte Flow + Vite tool used to write branching dialogues, auto-exports
+			into JSON.
+			<br />
+			<br />
+
+			<a
 				href="https://github.com/emil-ke/slippery-scenes-godot"
 				class="accentLink"
 				target="_blank">GitHub/emil-ke/slippery-scenes-godot</a
-			>). And I made a small plugin that mirrors vim's :b# command but for Godot
-			scenes instead of buffers (<a
+			> — A Godot extension plugin for scene-switching, which uses a fuzzy finding
+			algorithm, inspired by fzf and Telescope.nvim. (Its GitHub page features a
+			demo video.)
+			<br />
+			<br />
+			<a
 				href="https://github.com/emil-ke/go-to-last-scene.godot"
 				class="accentLink"
 				target="_blank">GitHub/emil-ke/go-to-last-scene.godot</a
-			>).
+			> — Another simple plugin that mirrors vim's :b# command but for Godot scenes
+			(not buffers).
 		</p>
+
+		<p>
+			The video below is a sort of poor-man's mechanics showcase I threw
+			together in haste. The included scenes are not finalized, hence the
+			weird floating houses.
+		</p>
+
 		<iframe
 			width="100%"
 			height="400"
-			src="https://www.youtube.com/embed/KCvx3G9BA2o?si=9x-yhOmAfLaKddCf"
-			title="Drown Demo"
-			allow="accelerometer;
-			autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
-			web-share"
+			src="https://www.youtube.com/embed/IACpxxracWg?si=D4d2FC_Eo57Ajr3p"
+			title="YouTube video player"
+			frameborder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen></iframe>
 	</ProjectPage>

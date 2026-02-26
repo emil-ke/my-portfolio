@@ -10,36 +10,36 @@ import ProjectPage from "../components/ProjectPage.astro";
 	<ProjectPage title="gitignore" images={["/gitignore_screenshot1.webp"]}>
 		<p>
 			A small CLI tool for automatically adding files or directories to a
-			project’s root <code>.gitignore</code> file. Built in C++.
+			project’s root <code>.gitignore</code> file. Built with C++.
 		</p>
 		<p>
-			I built this because I sometimes forget how you're supposed to add
+			I made this because I find it tedius to manually add
 			stuff to <code>.gitignore</code>, especially when working deep
-			inside nested folders, and I don’t like populating the directory
-			with <code>.gitignore</code> files in every subdirectory. With this project,
-			I can instead just run <code>gitignore path/to/file</code> and it adds
+			inside nested directories, and I don’t like populating subdirectories
+			with <code>.gitignore</code> files. So because of this project,
+			I can instead just run <code>gitignore path/to/file</code> in my command line and it adds
 			the correct relative path to the root <code>.gitignore</code>, even
-			if I'm many levels deep in the tree.
+			if I'm many levels deep in the directory tree.
 		</p>
 		<p>
 			It recursively traverses upward to find the nearest <code>.git</code
 			> folder (or lets you pick if there are multiple), computes the relative
-			path, and appends it to the right <code>.gitignore</code> file, unless
-			it’s in already there.
+			path, and appends it to the correct <code>.gitignore</code> file, unless
+			it’s in already there. You can also add multiple files or directories with a single command (via <code>$ gitignore path1 [path2...]</code>).
 		</p>
 
 		<p>
-			If there are no collisions (multiple <code>.git</code> folders all the
-			way up the directory tree), it automatically picks the root of the .git
-			and adds the thing to ignore, which is sensible standard-behavior, I
-			think. It only interacts with the user in the case of coliding .git folders.
+			If there are no collisions (i.e. only one <code>.git</code> folder all the
+			way up the directory tree), it automatically picks the root of the .git path
+			and adds the chosen file/directory to ignore in the <code>.gitignore</code> there, which is sensible standard-behavior, I
+			think. It only interacts with the user in the case of colliding .git folders.
 		</p>
 
 		<div class="spacer"></div>
 
 		<ul>
 			<li>
-				See the source code: <a
+				Source code: <a
 					href="https://github.com/emil-ke/gitignore"
 					class="accentLink"
 					target="_blank">GitHub/emil-ke/gitignore</a

@@ -1,280 +1,284 @@
 <style>
-    .about {
-        width: 100%;
-        min-height: 10vh;
-        background-color: var(--text-color);
-        color: var(--accent);
-        display: grid;
-        grid-template-columns: 4% 1fr 1fr;
-        position: relative;
-        z-index: 3;
-        position: relative;
-    }
+	.about {
+		width: 100%;
+		min-height: 10vh;
+		background-color: var(--background_alt);
+		display: grid;
+		grid-template-columns: 4% 1fr 1fr;
+		position: relative;
+		z-index: 3;
+		position: relative;
+	}
 
-    .midLeft,
-    .midRight {
-        position: absolute;
-        top: 50%;
-        opacity: 70%;
-    }
+	.midLeft,
+	.midRight {
+		position: absolute;
+		top: 50%;
+		opacity: 70%;
+	}
 
-    .topLine {
-        position: absolute;
-        top: 10%;
-        left: 47%;
-    }
+	.topLine {
+		position: absolute;
+		top: 10%;
+		left: 47%;
+	}
 
-    .topLine span {
-        display: inline-block;
-        transform: rotate(-90deg);
-        opacity: 70%;
-    }
+	.topLine span {
+		display: inline-block;
+		transform: rotate(-90deg);
+		opacity: 70%;
+	}
 
-    .bottomLine {
-        position: absolute;
-        bottom: 2%;
-        left: 48%;
-    }
+	.bottomLine {
+		position: absolute;
+		bottom: 2%;
+		left: 48%;
+	}
 
-    .topLeft {
-        position: absolute;
-        top: 2%;
-        left: 27%;
-        opacity: 40%;
-        font-size: 1.7em;
-    }
+	.topLeft {
+		position: absolute;
+		top: 2%;
+		left: 27%;
+		opacity: 40%;
+		font-size: 1.7em;
+	}
 
-    .midLeft {
-        left: 4%;
-    }
+	.midLeft {
+		left: 4%;
+	}
 
-    .midRight {
-        right: 0%;
-    }
+	.midRight {
+		right: 0%;
+	}
 
-    .midLeft .rotated,
-    .midRight .rotated,
-    .topLeft .rotated {
-        display: inline-block;
-        transform: rotate(-90deg);
-        color: black;
-    }
+	.midLeft .rotated,
+	.midRight .rotated,
+	.topLeft .rotated {
+		display: inline-block;
+		transform: rotate(-90deg);
+	}
 
-    .topRight {
-        position: absolute;
-        top: 2%;
-        opacity: 70%;
-    }
+	.topRight {
+		position: absolute;
+		top: 2%;
+		opacity: 70%;
+	}
 
-    .aboutHeading {
-        position: absolute;
-        left: 4%;
-        top: 5%;
-    }
+	.aboutHeading {
+		position: absolute;
+		left: 4%;
+		top: 5%;
+	}
 
-    .decorationText {
-        position: absolute;
-        bottom: 5%;
-        left: 4%;
-        font-weight: 300;
-        color: var(--text-color-alt);
-        opacity: 50%;
-        transition: all 3.5s ease;
-    }
+	.decorationText {
+		position: absolute;
+		bottom: 5%;
+		left: 4%;
+		font-weight: 300;
+		color: #2b1e2f;
+		opacity: 50%;
+		transition: all 3.5s ease;
+	}
 
-    .decorationText:hover {
-        filter: blur(10px);
-        opacity: 60%;
-    }
+	.decorationText:hover {
+		filter: blur(10px);
+		opacity: 60%;
+	}
 
-    .aboutText {
-        grid-column: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: end;
-        text-align: right;
-        padding-right: 3rem;
-    }
+	.aboutText {
+		grid-column: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: end;
+		text-align: right;
+		padding-right: 3rem;
+	}
 
-    .imgContainer {
-        grid-column: 3;
-        width: 100%;
-        height: auto;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
+	.imgContainer {
+		grid-column: 3;
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
 
-    .aboutDesc {
-        width: 74%;
-        line-height: 1.6;
-    }
+	.aboutDesc {
+		width: 74%;
+		line-height: 1.6;
+	}
 
-    .aboutDesc1 {
-        width: 55%;
-        margin-top: 9rem;
-    }
+	.aboutDesc1 {
+		width: 55%;
+		margin-top: 9rem;
+	}
 
-    .aboutDesc2 {
-        width: 39%;
-    }
+	.aboutDesc2 {
+		width: 39%;
+	}
 
-    #contact {
-        margin: 8rem 0;
-    }
+	#contact {
+		margin: 8rem 0;
+	}
 
-    .img {
-        height: 100%;
-        width: 100%;
-        transition: filter 0.3s ease;
-        background-color: white !important;
-    }
+	.img {
+		height: 100%;
+		width: 100%;
+		transition: filter 0.3s ease;
+		background-color: white !important;
+	}
 
-    .imgOverlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        white-space: nowrap;
-        color: var(--accent_l);
-    }
+	.imgOverlay {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+		white-space: nowrap;
+		color: var(--background);
+	}
 
-    .imgContainer:hover .img {
-        filter: blur(7px) brightness(1.16);
-    }
+	.imgContainer:hover .img {
+		filter: blur(7px) brightness(1.16);
+	}
 
-    .imgContainer:hover .imgOverlay {
-        opacity: 1;
-    }
+	.imgContainer:hover .imgOverlay {
+		opacity: 1;
+	}
 
-    #email {
-        color: var(--background);
-        font-weight: bold;
-    }
+	#email {
+		color: white;
+		font-weight: bold;
+		transition: all 0.2s ease;
+	}
 
-    @media (max-width: 768px) {
-        .aboutDesc,
-        .aboutDesc:first-child,
-        .aboutDesc:nth-child(2) {
-            width: 100%;
-            text-align: left;
-        }
-        .decorationText,
-        .imgOverlay,
-        .midLeft,
-        .midRight {
-            display: none;
-        }
+	#email:hover {
+		color: var(--accent_l);
+	}
 
-        .imgContainer:hover .img {
-            filter: blur(0) brightness(1);
-        }
-    }
+	@media (max-width: 768px) {
+		.aboutDesc,
+		.aboutDesc:first-child,
+		.aboutDesc:nth-child(2) {
+			width: 100%;
+			text-align: left;
+		}
+		.decorationText,
+		.imgOverlay,
+		.midLeft,
+		.midRight {
+			display: none;
+		}
+
+		.imgContainer:hover .img {
+			filter: blur(0) brightness(1);
+		}
+	}
 </style>
 
 <div class="aboutWrapper">
-    <div class="top"></div>
-    <section class="about" id="about">
-        <div class="midLeft">
-            <span class="rotated small">01</span>
-        </div>
-        <h5 class="aboutHeading">about</h5>
-        <h3 class="decorationText">
-            __synec<br />doche
-        </h3>
-        <div class="aboutText">
-            <p
-                class="aboutDesc"
-                style="opacity: 60%;color: var(--text-color-alt); opacity: 40%"
-            >
-                _________________________
-            </p>
-            <p class="aboutDesc aboutDesc1">
-                I don’t like about sections. But here we are, so I guess I
-                should say something. I live in Stockholm, studying math.
-                Currently, I’m writing a thesis on spectral graph theory (Paley-
-                and near-Ramanujan graphs). I also build games and tools and
-                such. And I paint a little.
-            </p>
+	<div class="top"></div>
+	<section class="about" id="about">
+		<div class="midLeft">
+			<span class="rotated small">01</span>
+		</div>
+		<h5 class="aboutHeading">about</h5>
+		<h3 class="decorationText">
+			__synec<br />doche
+		</h3>
+		<div class="aboutText">
+			<p
+				class="aboutDesc"
+				style="opacity: 60%;color: var(--text-color-alt); opacity: 40%"
+			>
+				_________________________
+			</p>
+			<p class="aboutDesc aboutDesc1">
+				I don’t like about sections much. But here we are, so I guess I should say
+				something. I live in Stockholm. I study math. Currently, I’m writing a
+				thesis on spectral graph theory (Paley- and near-Ramanujan graphs). I
+				also build games and tools and such. And I paint a little.
+			</p>
 
-            <p class="aboutDesc aboutDesc2">
-                OK, that’ll have to do. Hopefully my projects say more than I
-                can.
-            </p>
+			<p class="aboutDesc aboutDesc2">
+				OK, that’ll have to do. Hopefully my projects say more than I can.
+			</p>
+			<p class="aboutDesc aboutDesc2">
+			Feel free to reach out.
+			</p>
 
-            <p class="aboutDesc" id="contact">
-                <a id="email"></a>
-            </p>
+			<p class="aboutDesc" id="contact">
+				<a id="email"></a>
+			</p>
 
-            <p
-                class="aboutDesc"
-                style="opacity: 60%;color: var(--text-color-alt); opacity: 40%"
-            >
-                _________________________
-            </p>
-        </div>
+			<p
+				class="aboutDesc"
+				style="opacity: 60%;color: var(--text-color-alt); opacity: 40%"
+			>
+				_________________________
+			</p>
+		</div>
 
-        <div class="imgContainer">
-            <div class="midLeft" style="padding-left: 2rem;">
-                <span class="rotated small">02</span>
-            </div>
-            <div class="midRight">
-                <div class="rotated small">BASED IN_______STOCKHOLM</div>
-            </div>
-            <img
-                src="/shirt-self-portrait3-45_new.webp"
-                alt="A self-portrait."
-                class="img"
-                loading="lazy"
-            />
-            <div class="imgOverlay">This is one of my self-portraits.</div>
-        </div>
-    </section>
+		<div class="imgContainer">
+			<div class="midLeft" style="padding-left: 2rem;">
+				<span class="rotated small" style="color: black;">02</span>
+			</div>
+			<div class="midRight">
+				<div class="rotated small" style="color: black;">BASED IN_______STOCKHOLM</div>
+			</div>
+			<img
+				src="/shirt-self-portrait3-45_new.webp"
+				alt="A self-portrait."
+				class="img"
+				loading="lazy"
+			/>
+			<div class="imgOverlay">This is one of my self-portraits.</div>
+		</div>
+	</section>
 </div>
 
 <script>
-    const user = "emilbertlin0";
-    const domain = "gmail.com";
-    const email = `${user}@${domain}`;
-    const emailLink = document.getElementById("email");
-    emailLink.textContent = email;
-    emailLink.href = `mailto:${email}`;
+	const user = "emilbertlin0";
+	const domain = "gmail.com";
+	const email = `${user}@${domain}`;
+	const emailLink = document.getElementById("email");
+	emailLink.textContent = email;
+	emailLink.href = `mailto:${email}`;
 </script>
 
 <script>
-    import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    gsap.registerPlugin(ScrollTrigger);
+	import gsap from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".aboutHeading", {
-        scrollTrigger: ".aboutHeading",
-        opacity: 0,
-    });
+	gsap.from(".aboutHeading", {
+		scrollTrigger: ".aboutHeading",
+		opacity: 0,
+	});
 
-    gsap.to(".aboutHeading", {
-        scrollTrigger: ".aboutHeading",
-        opacity: 1,
-    });
+	gsap.to(".aboutHeading", {
+		scrollTrigger: ".aboutHeading",
+		opacity: 1,
+	});
 
-    gsap.utils.toArray(".aboutDesc").forEach((desc, i) => {
-        if (i >= 5) return;
-        gsap.from(desc, {
-            y: 30,
-            opacity: 0,
-            clipPath: "inset(0 0 100% 0)",
-            duration: 0.36,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: desc,
-                start: "center 96%", // when each desc hits 96% from top
-                toggleActions: "play none none none",
-            },
-        });
-    });
+	gsap.utils.toArray(".aboutDesc").forEach((desc, i) => {
+		if (i >= 5) return;
+		gsap.from(desc, {
+			y: 30,
+			opacity: 0,
+			clipPath: "inset(0 0 100% 0)",
+			duration: 0.36,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: desc,
+				start: "center 96%", // when each desc hits 96% from top
+				toggleActions: "play none none none",
+			},
+		});
+	});
 </script>
