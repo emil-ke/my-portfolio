@@ -44,8 +44,10 @@ const { name, description, link } = Astro.props;
 </style>
 
 <div class="card">
-    <a href={link} class="cardLink">
+	<a href={link} class="cardLink">
+		<div>
         <h5>{name}</h5>
-        <p class="projectDescription">{description}</p>
+				<p class="projectDescription">{description}</p>
+		</div>
     </a>
 </div>

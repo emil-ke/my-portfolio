@@ -8,20 +8,20 @@ import ProjectPage from "../components/ProjectPage.astro";
 	<StickyMenu />
 	<ProjectPage
 		title="ASSAIL!"
-		images={["/game1.png", "/game2.png", "/game3.png", "/game4.png"]}
+		images={["/game1.png", "/game2.png", "/game3.png", "/game4.png", "/game5.png"]}
 	>
 		<p>
 			ASSAIL! is an atmospheric psychological thriller about a man reeled back
-			to his brother's abandoned house while losing grasp on reality. You
-			search the quiet, confront brutality, and push deeper into a night that
-			keeps on taking.
+			to his brother's abandoned house while losing grasp on reality. You search
+			the quiet, confront brutality, and push deeper into a night that keeps on
+			taking.
 		</p>
 
 		<p>
 			This is my first Godot game. I'm aiming to release it in a couple of
-			months. As I learn by doing, I've created nearly everything myself; all code is handcrafted;
-			all music and sounds are by me; something like 95% of the 3D models and
-			textures are original.
+			months. As I learn by doing, I've created nearly everything myself; all
+			code is handcrafted; all music and sounds are by me; something like 95% of
+			the 3D models and textures are original.
 		</p>
 		<p>
 			I was drawn to games since it's a kind of cesspool for my interests. My
@@ -29,20 +29,31 @@ import ProjectPage from "../components/ProjectPage.astro";
 			interests. I suppose I'm pretty polymathic. For instance, I have a huge
 			interest in writing and have worked in literary fiction for a few years.
 			My first artistic pursuit was music, which I began playing and producing
-			at sixteen or so. I'm also passionate about visual art, and that eventually
-			roped me into 3D work.
+			at sixteen or so. I'm also passionate about visual art, and that
+			eventually roped me into 3D work.
 		</p>
 		<p>
 			As Godot is a very lean engine, I've had to implement plenty of necessary
 			systems and tools. An important one I've made recently is a pipeline for
 			fractured objects: with it, I mark a "base mesh" inside the <code
 				>.blend</code
-			>-file and all other meshes should be cell-fractured pieces of that base. A
-			custom import script auto-creates the necessary scene inside Godot, so I
+			>-file and all other meshes should be cell-fractured pieces of that base.
+			A custom import script auto-creates the necessary scene inside Godot, so I
 			don't need any manual intervention to create breakable objects. Another
-			crucial thing I've made is a material blending shader system, which uses
+			crucial thing is a material blending shader system, which uses
 			the different UV channels in order to blend materials via image masks.
 			Here, for the normal blending, I implemented reoriented normal mapping.
+		</p>
+		<p>
+			Since this project contains so much, thousands of lines of code, thousands
+			of assets and sounds, etc., it's hard to give a comprehensive run-down.
+			Some of the biggest challenges have been creating pipelines and system
+			that make future work faster, like my modular weapon system, which now
+			works well. I've also done a bunch of locomotion tweaking, making the character
+			controller feel good, making the camera smooth. The biggest thing I've
+			learned while working on this, though, is more over-arching game design,
+			how to write for games, how to pace sections, deciding what degree of
+			agency the player should have.
 		</p>
 		<p>
 			This game is not open-sourced, but my GitHub houses a few related
@@ -77,8 +88,8 @@ import ProjectPage from "../components/ProjectPage.astro";
 
 		<p>
 			The video below is a sort of poor-man's mechanics showcase I threw
-			together in haste. The included scenes are not finalized, hence the
-			weird floating houses.
+			together in haste. The included scenes are not finalized, hence the weird
+			floating houses.
 		</p>
 
 		<iframe
