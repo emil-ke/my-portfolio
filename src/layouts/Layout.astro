@@ -10,12 +10,11 @@ import Footer from "../components/Footer.astro";
 		inset: -50%;
 		width: 400%;
 		height: 400vh;
-		background: url("/noise.png") repeat;
+		background: url("/mask.jpg") repeat;
 		pointer-events: none;
-
-		mix-blend-mode: overlay;
-		opacity: 1;
-		animation: noise 120ms steps(2) infinite;
+		mix-blend-mode: screen;
+		opacity: 0.05;
+		animation: noise 3800ms steps(2) infinite;
 	}
 	@keyframes noise {
 		0%,
