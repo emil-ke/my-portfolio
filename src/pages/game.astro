@@ -8,7 +8,13 @@ import ProjectPage from "../components/ProjectPage.astro";
 	<StickyMenu />
 	<ProjectPage
 		title="ASSAIL!"
-		images={["/game1.webp", "/game2.webp", "/game3.webp", "/game4.webp", "/game5.webp"]}
+		images={[
+			"/game1.webp",
+			"/game2.webp",
+			"/game3.webp",
+			"/game4.webp",
+			"/game5.webp",
+		]}
 	>
 		<p>
 			ASSAIL! is an atmospheric psychological thriller about a man reeled back
@@ -24,7 +30,7 @@ import ProjectPage from "../components/ProjectPage.astro";
 			the 3D models and textures are original.
 		</p>
 		<p>
-			I was drawn to games since it's a kind of cesspool for my interests. My
+			I was drawn to games since it's a cesspool for my interests, sort of. My
 			academic background is in math and CS, but I have somewhat variegated
 			interests. I suppose I'm pretty polymathic. For instance, I have a huge
 			interest in writing and have worked in literary fiction for a few years.
@@ -40,20 +46,20 @@ import ProjectPage from "../components/ProjectPage.astro";
 			>-file and all other meshes should be cell-fractured pieces of that base.
 			A custom import script auto-creates the necessary scene inside Godot, so I
 			don't need any manual intervention to create breakable objects. Another
-			crucial thing is a material blending shader system, which uses
-			the different UV channels in order to blend materials via image masks.
-			Here, for the normal blending, I implemented reoriented normal mapping.
+			crucial thing is a material blending shader system, which uses the
+			different UV channels in order to blend materials via image masks. Here,
+			for the normal blending, I implemented reoriented normal mapping.
 		</p>
 		<p>
 			Since this project contains so much, thousands of lines of code, thousands
 			of assets and sounds, etc., it's hard to give a comprehensive run-down.
 			Some of the biggest challenges have been creating pipelines and system
 			that make future work faster, like my modular weapon system, which now
-			works well. I've also done a bunch of locomotion tweaking, making the character
-			controller feel good, making the camera smooth. The biggest thing I've
-			learned while working on this, though, is more over-arching game design,
-			how to write for games, how to pace sections, deciding what degree of
-			agency the player should have.
+			works well. I've also done a bunch of locomotion tweaking, making the
+			character controller feel good, making the camera smooth. The biggest
+			thing I've learned while working on this, though, is more over-arching
+			game design, how to write for games, how to pace sections, deciding what
+			degree of agency the player should have.
 		</p>
 		<p>
 			This game is not open-sourced, but my GitHub houses a few related
@@ -88,14 +94,13 @@ import ProjectPage from "../components/ProjectPage.astro";
 
 		<p>
 			The video below is a sort of poor-man's mechanics showcase I threw
-			together in haste. The included scenes are not finalized, hence the weird
-			floating houses.
+			together in haste.
 		</p>
 
 		<iframe
 			width="100%"
-			height="400"
-			src="https://www.youtube.com/embed/IACpxxracWg?si=D4d2FC_Eo57Ajr3p"
+			height="500"
+			src="https://www.youtube.com/embed/wdviSusyrIQ?si=26HHDFVd94Y2Srrt&start=3"
 			title="YouTube video player"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
