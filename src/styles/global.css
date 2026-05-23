@@ -7,10 +7,30 @@
 	--text-color: #faebe1;
 	--text-color-alt: #ffc8d9;
 	/*--accent: #96304f;*/
-	--accent: #553d56;
+	/* --accent: #553d56; */
+	--accent: #443145;
 	--accent-brighter: #FF4242;
+	/* --accent-brighter: #6e9a9f;*/
 	--accent_l: #eca19b;
-	--accent_d: #ff5f6c;
+	--accent_d: #516e86;
+	--accent_d: #fc404f;
+	--footer-h: 200px
+}
+
+:root,
+[data-theme="light"] {
+	--background: #fff;
+	--background_alt: #f0f0f0;
+	--text-color: #000000;
+	--text-color-alt: #222222;
+	/*--accent: #96304f;*/
+	/* --accent: #553d56; */
+	--accent: #443145;
+	--accent-brighter: #FF4242;
+	/* --accent-brighter: #6e9a9f;*/
+	--accent_l: #eca19b;
+	--accent_d: #516e86;
+	--accent_d: #fc404f;
 	--footer-h: 200px
 }
 
@@ -113,6 +133,10 @@ img {
 	font-size: 0.7em;
 }
 
+.accent-color {
+	color: var(--accent);
+}
+
 .smaller {
 	font-size: 0.3em;
 }
@@ -139,7 +163,6 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
 	background: var(--accent_l);
-	border-radius: 2px;
 }
 
 body::-webkit-scrollbar-thumb:hover {

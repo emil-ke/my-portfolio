@@ -1,5 +1,19 @@
 ---
-const { title, images = [] } = Astro.props;
+const { title, images = [], writing_page = false } = Astro.props;
+
+let pageback_link: string;
+let pageback_name: string;
+let mobile_pageback_name: string;
+
+if (writing_page) {
+	pageback_link = "/writing";
+	pageback_name = "the writing collection page";
+	mobile_pageback_name = "writing";
+} else {
+	pageback_link = "/#projects";
+	pageback_name = "the list of projects";
+	mobile_pageback_name = "projects";
+}
 ---
 
 <style>
@@ -16,6 +30,7 @@ const { title, images = [] } = Astro.props;
 		flex-direction: row;
 		min-height: 100vh;
 	}
+
 	.projectTitle {
 		margin-bottom: 6rem;
 	}
@@ -45,6 +60,8 @@ const { title, images = [] } = Astro.props;
 		padding: 1rem 2rem;
 		transition: all 0.2s ease-in-out;
 		border: 2px solid var(--accent_l);
+		display: inline-block;
+		white-space: nowrap;
 	}
 
 	.goBackBtn:hover {
@@ -52,10 +69,19 @@ const { title, images = [] } = Astro.props;
 		border: 2px solid var(--accent-brighter);
 	}
 
+	.desktopBackText {
+		display: inline;
+	}
+
+	.mobileBackText {
+		display: none;
+	}
+
 	@media (max-width: 1020px) {
 		.projectContent {
 			flex-direction: column;
 		}
+
 		.projectImages {
 			align-items: center;
 			flex-direction: row;
@@ -64,9 +90,20 @@ const { title, images = [] } = Astro.props;
 			margin-top: 3rem;
 			gap: 2rem;
 		}
+
 		.projectImages img {
 			max-width: 90vw;
 			margin-bottom: 0;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.desktopBackText {
+			display: none;
+		}
+
+		.mobileBackText {
+			display: inline;
 		}
 	}
 </style>
@@ -77,14 +114,24 @@ const { title, images = [] } = Astro.props;
 			<h4 class="projectTitle">{title}</h4>
 			<slot />
 		</div>
+
 		<div class="projectImages">
 			{images.map((src) => <img src={src} alt={title + " screenshot"} />)}
 		</div>
 	</div>
+
 	<div class="spacer"></div>
+
 	<div class="backBtnWrapper">
-		<a class="goBackBtn" href="/#projects"
-			>← <span style="margin: 1rem;"></span>back to projects</a
-		>
+		<a class="goBackBtn" href={pageback_link}>
+			←
+			<span style="margin: 1rem;"></span>
+
+			<span class="desktopBackText">
+				back to {pageback_name}
+			</span>
+
+			<span class="mobileBackText"> go back </span>
+		</a>
 	</div>
 </div>

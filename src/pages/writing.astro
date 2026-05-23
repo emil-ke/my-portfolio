@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StickyMenu from "../components/StickyMenu.astro";
+import Card from "../components/Card.astro";
+---
+
+<style>
+	.cards {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.cardWrapper {
+		margin-top: 24em;
+		width: 92%;
+	}
+
+	.spacer {
+	height: 12em;
+	width: 100%;
+	}
+</style>
+
+<Layout>
+	<div>
+		<StickyMenu showOnScroll="false" />
+		<div class="cards">
+			<div class="cardWrapper">
+				<Card
+					name="Butterfly Sotto"
+					description="2025-08-13"
+					link="/writing/butterfly-sotto"
+				/>
+			<div class="spacer"></div>
+			</div>
+		</div>
+	</div>
+</Layout>
