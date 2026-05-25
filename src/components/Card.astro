@@ -1,53 +1,53 @@
 ---
 interface Props {
-    name: string;
-    description: string;
-    link: string;
+	name: string;
+	description: string;
+	link: string;
 }
 
 const { name, description, link } = Astro.props;
 ---
 
 <style>
-    .card {
-        position: relative;
-        width: 100%;
-        max-width: 400px;
-        margin: 1.2rem 1rem; 
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+	.card {
+		position: relative;
+		width: 100%;
+		max-width: 400px;
+		margin: 1.2rem 0;
+		overflow: hidden;
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
 
-    .card a:hover {
-        color: var(--accent-brighter);
-    }
+	.card a:hover {
+		color: var(--accent-brighter);
+	}
 
-    .card a:hover > h5 {
-        color: var(--accent_d);
-    }
+	.card a:hover > h5 {
+		color: var(--accent_d);
+	}
 
-    .card h5 {
-        margin: 0.5rem;
-        transition: all 0.2s ease;
-    }
+	.card h5 {
+		margin: 0.5rem;
+		transition: all 0.2s ease;
+	}
 
-    .card p {
-        margin: 0.8rem 0.5rem;
-        transition: all 0.3s ease-in-out;
-    }
+	.card p {
+		margin: 0.8rem 0.5rem;
+		transition: all 0.3s ease-in-out;
+	}
 
-    .cardLink {
-        text-decoration: none;
-        color: inherit;
-    }
+	.cardLink {
+		text-decoration: none;
+		color: inherit;
+	}
 </style>
 
 <div class="card">
 	<a href={link} class="cardLink">
 		<div>
-        <h5>{name}</h5>
-				<p class="projectDescription">{description}</p>
+			<h5>{name}</h5>
+			<p class="projectDescription">{description}</p>
 		</div>
-    </a>
+	</a>
 </div>
