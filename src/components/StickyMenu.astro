@@ -14,6 +14,7 @@ const { showOnScroll = false } = Astro.props;
 		position: sticky;
 		top: 0;
 		z-index: 2000;
+		pointer-events: none;
 	}
 
 	header {
@@ -32,25 +33,35 @@ const { showOnScroll = false } = Astro.props;
 	header.visible {
 		opacity: 1;
 		transform: translateY(0);
-		pointer-events: auto;
+		/* pointer-events: auto;*/
 	}
 
 	nav {
 		grid-column: 2;
 		text-align: end;
 		cursor: pointer;
+		pointer-events: auto;
 		transition: color 0.2s ease-in-out;
 		position: relative;
 		z-index: 2200;
 	}
 
-	nav:hover {
-		color: var(--accent-brighter);
+	nav#menu-toggle {
+		grid-column: 2;
+		display: inline-block;
+		width: fit-content;
+		margin-left: auto;
+		padding: 0 0 2em 2em;
+		text-align: end;
+		cursor: pointer;
+		transition: color 0.2s ease-in-out;
+		position: relative;
+		z-index: 2200;
+		pointer-events: auto;
 	}
 
-	nav#menu-toggle {
-		display: inline-block;
-		padding: 0 0 2em 2em;
+	nav#menu-toggle:hover {
+		color: var(--accent-brighter);
 	}
 
 	.dropdown-wrapper {
@@ -61,7 +72,7 @@ const { showOnScroll = false } = Astro.props;
 		height: 100%;
 		background: transparent;
 		backdrop-filter: blur(7px);
-		transition: width .12s ease-in-out;
+		transition: width 0.12s ease-in-out;
 		z-index: 1000;
 	}
 
