@@ -1,6 +1,12 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
+
+interface Props {
+showNoise?: boolean;
+}
+
+const { showNoise = true } = Astro.props;
 ---
 
 <style>
@@ -69,7 +75,7 @@ import Footer from "../components/Footer.astro";
 	/>
 	<body data-theme="dark" lang="en">
 		<div class="ov"></div>
-		<div id="noise-bg"></div>
+		{showNoise && <div id="noise-bg"></div>}
 		<main class="pageContent">
 			<slot />
 		</main>
