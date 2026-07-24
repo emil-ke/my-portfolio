@@ -8,40 +8,30 @@ import ProjectPage from "../components/ProjectPage.astro";
 	<StickyMenu />
 	<ProjectPage
 		title="TOLTO!"
-		images={[
-			"/game1.webp",
-			"/game2.webp",
-			"/game3.webp",
-			"/game4.webp",
-			"/game5.webp",
-		]}
+		images={["/game1.webp", "/game2.webp", "/game3.webp", "/game5.webp"]}
 	>
 		<p>
-			TOLTO! is an atmospheric psychological thriller about a man reeled back to
-			his brother's abandoned house while losing grasp on reality. You search
-			the quiet, confront brutality, and push deeper into a night that keeps on
-			taking.
+			TOLTO! is a psychological thriller where you search your estranged
+			brother's apartment after he disappears.
 		</p>
 
 		<p>
-			This is my first Godot game. It is fairly ambitious and, as such, will
-			take quite some time to finish. As I learn by doing, I've created nearly
+			This is my first Godot game. It's a solo project, and I've created nearly
 			everything myself; all code is handcrafted; all music and sounds are by
-			me; something like 95% of the 3D models and textures are original.
+			me; ~90% of the 3D models and textures are original.
 		</p>
 		<p>
-			I was drawn to games since it's a cesspool for my interests, sort of. My
+			I was drawn to games since it's a kind of cesspool for my interests. My
 			academic background is in math and CS, but I have somewhat variegated
-			interests. I suppose I'm pretty polymathic. For instance, I have a huge
-			interest in writing and have worked in literary fiction for a few years.
-			My first artistic pursuit was music, which I began playing and producing
-			at sixteen or so. I'm also passionate about visual art, and that
-			eventually roped me into 3D work.
+			interests. For instance, I've written literary fiction for a few years. My
+			first artistic pursuit was music, which I began playing and producing at
+			sixteen or so. I'm also passionate about visual art, and that eventually
+			roped me into 3D work.
 		</p>
 		<p>
-			As Godot is a very lean engine, I've had to implement plenty of necessary
-			systems and tools. An important one I've made recently is a pipeline for
-			fractured objects: with it, I mark a "base mesh" inside the <code
+			Godot is a very lean engine. Because of this, I've had to implement plenty
+			of necessary systems and tools. An important one I've made recently is a
+			pipeline for fractured objects: with it, I mark a "base mesh" inside a <code
 				>.blend</code
 			>-file and all other meshes should be cell-fractured pieces of that base.
 			A custom import script auto-creates the necessary scene inside Godot, so I
@@ -51,17 +41,17 @@ import ProjectPage from "../components/ProjectPage.astro";
 			for the normal blending, I implemented reoriented normal mapping.
 		</p>
 		<p>
-			Since this project contains so much, thousands of lines of code, thousands
-			of assets and sounds, etc., it's hard to give a comprehensive run-down.
-			Some of the biggest challenges have been creating pipelines and system
-			that make future work faster, like my modular weapon system, which works
-			well now. I've also done a bunch of locomotion tweaking, making the
+			Since this project contains so much, many thousands of lines of code,
+			thousands of assets and sounds, etc., it's hard to give a comprehensive
+			run-down. Some of the biggest challenges have been creating pipelines and
+			system that make future work faster, like my modular weapon system, which
+			works well now. I've also done a bunch of locomotion tweaking, making the
 			character controller feel good, making the camera smooth. Animations are
-			still only in their prototype stage, though, and there's a lot of room for
-			improvements. The biggest thing I've learned while working on this is more
-			over-arching game design, how to write for games, how to pace sections,
-			deciding what degree of agency the player should have, forcing the player
-			to make decisions.
+			still only in their prototype stage, though, and there is a lot of room
+			for improvements. The biggest thing I've learned while working on this has
+			to do with over-arching game design, how to write for games, how to pace
+			sections, challenging the player and their agency, forcing the player to
+			make decisions.
 		</p>
 		<p>
 			This game is not open-sourced, but my GitHub houses a few related
@@ -81,8 +71,8 @@ import ProjectPage from "../components/ProjectPage.astro";
 				href="https://github.com/emil-ke/slippery-scenes-godot"
 				class="accentLink"
 				target="_blank">github.com/emil-ke/slippery-scenes-godot</a
-			> — A Godot extension plugin for scene-switching, which uses a fuzzy finding
-			algorithm, inspired by fzf and Telescope.nvim. (Its GitHub page features a
+			> — A Godot extension plugin for keyboard-based scene-switching which uses a fuzzy finding
+			algorithm, inspired by Telescope.nvim. (Its GitHub page features a
 			demo video.)
 			<br />
 			<br />
@@ -90,8 +80,7 @@ import ProjectPage from "../components/ProjectPage.astro";
 				href="https://github.com/emil-ke/go-to-last-scene.godot"
 				class="accentLink"
 				target="_blank">github.com/emil-ke/go-to-last-scene.godot</a
-			> — Another simple plugin that mirrors vim's :b# command but for Godot scenes
-			(not buffers).
+			> — Another simple plugin that mirrors vim's :b# command but for Godot scenes, i.e. you can hop between two scenes very quickly.
 		</p>
 
 		<p>
@@ -102,7 +91,7 @@ import ProjectPage from "../components/ProjectPage.astro";
 		<iframe
 			width="100%"
 			height="500"
-			src="https://www.youtube.com/embed/9MlutFZNYv4?si=_UlYOYniz2ltM7GK"
+			src="https://www.youtube.com/embed/7BUq6BgTuzY?si=2As8pt9zXj7fY52r"
 			title="YouTube video player"
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
