@@ -1,7 +1,7 @@
 export const projects = [
     {
         name: "TOLTO!",
-        description: "An psychological thriller game, made with Godot.",
+        description: "A psychological thriller game made with Godot.",
         link: "/game",
     },
     {
