@@ -10,9 +10,9 @@ import ProjectPage from "../components/ProjectPage.astro";
 		<ProjectPage
 			title="Poetry generator"
 			images={[
-				"/poetry.webp",
 				"/poetry_screenshot1.webp",
 				"/poetry_screenshot2.webp",
+				"/poetry_screenshot3.webp",
 			]}
 		>
 			<p class="desc">
@@ -21,21 +21,21 @@ import ProjectPage from "../components/ProjectPage.astro";
 			</p>
 			<p>This is more of a semiotic experiment than a technical project.</p>
 			<p>
-				Even though the results are often very janky and nonsensical, if you
-				pick your keywords carefully it can spit out surprisingly cohesive poems
-				with a fragmented, ambiguous tone, making it feel deliberate rather than
-				accidental, at times. Like a kind of Rorschach blot of syntax, carrying
-				a sort of twisted body of language without soul, but even still, meaning
-				can emerge through the cracks (e.g., “the unmade and the puny unfit /
-				the humdrum was trumpeted by the mug”; to me this feels like it's nearly
-				pulling on something real while remaining largely nonsensical, which
-				makes it feel somewhat uncanny).
+				Even though the results are often very janky, ungrammatical, and
+				nonsensical, if you pick your keywords carefully it can spit out
+				surprising poems with a fragmented, ambiguous tone, at times making it
+				feel deliberate rather than accidental. It's like a kind of Rorschach
+				blot of syntax, carrying a sort of twisted body of language without
+				soul, but even still, meaning can peer through (e.g., “the unmade and
+				the puny unfit / the humdrum was trumpeted by the mug”; to me this feels
+				like it's nearly pulling on something real while remaining largely
+				nonsensical, which makes it feel somewhat uncanny).
 			</p>
 			<p>
 				I think the divide between nonsense and sense is itself interesting,
 				which is why I built this. Humans are nearly pathologically allergic to
-				senselessness. We're helplessly apophenic little animals. We're addicted
-				to meaning. I.e. nonsense often gets metabolized into coherence, even if
+				senselessness. We're helplessly apophenic little animals. Addicted to
+				meaning. I.e. nonsense often gets metabolized into coherence, even if
 				the intent of a sentence is utterly meaningless (Chomsky famously
 				constructed, “Colorless green ideas sleep furiously,” as an example of a
 				grammatically correct, senseless statement. John Hollander, inspired by
@@ -44,9 +44,13 @@ import ProjectPage from "../components/ProjectPage.astro";
 				sleep furiously”).
 			</p>
 			<p>
-				The interesting part, to me, is not the "poems" (if you can call them
-				that, artifacts might be a better word) that are produced here but,
-				rather, the way they're read.
+				I find the poems of this generator (if they can be called that: "written
+				artifacts" might be more apt) less interesting than the way they're
+				read. In playing around with it, I've been surprised by what it spits
+				out, and because of this I've considered adding it to my game (<a
+					href="/game"
+					class="accentLink">TOLTO!</a
+				>).
 			</p>
 			<p>
 				As for how it works: A wordbank (a JSON file filled with verbs, nouns,
